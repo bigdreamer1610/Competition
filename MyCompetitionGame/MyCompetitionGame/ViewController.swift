@@ -21,11 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet var btnTest: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //retrieveDataQuestion()
-        let group = DispatchGroup()
-        group.enter()
         retrieveDataQuestion()
-        group.leave()
         print(questions.count)
     }
     func retrieveDataQuestion(){

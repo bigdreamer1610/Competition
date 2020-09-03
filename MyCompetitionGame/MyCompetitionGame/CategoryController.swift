@@ -19,40 +19,38 @@ class CategoryController: UIViewController {
     @IBOutlet var lbTest: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //retrieveDataCategory()
+        retrieveDataCategory()
         
-        /*
-         let nib = UINib(nibName: "MyCell", bundle: nil)
-         tableView.register(nib, forCellReuseIdentifier: "MyCell")
-         tableView.delegate = self
-         tableView.dataSource = self
-         */
-        lbTest.text = "\(categories.count)"
+        print("hmm: \(categories.count)")
         let nib = UINib(nibName: "CategoryCell", bundle: nil)
         categoryTableView.register(nib, forCellReuseIdentifier: "CategoryCell")
         categoryTableView.delegate = self
         categoryTableView.dataSource = self
     }
 
+    
     func retrieveDataCategory(){
-        MyDatabase.ref.child(myChild).observeSingleEvent(of: .value) { (snapshot) in
+        var myList = [Category]()
+        MyDatabase.ref.child("Category").observeSingleEvent(of: .value) {[weak self] (snapshot) in
+            guard let `self` = self else {
+                return
+            }
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
                     print(snap.key)
-                    let myKey = snap.key
-                    MyDatabase.ref.child(self.myChild).child(myKey).observeSingleEvent(of: .value) { (mySnap) in
-                        let value = snap.value as? NSDictionary
-                        let categoryid = value?["categoryid"] as? Int
-                        let name = value?["name"] as? String
+                    if let value = snap.value as? [String : Any] {
+                       let categoryid = value["categoryid"] as? Int
+                        let name = value["name"] as? String
                         let category = Category(categoryid: categoryid!, name: name!)
-                        self.categories.append(category)
-                        DispatchQueue.main.async {
-                            self.categoryTableView.reloadData()
-                        }
+                        myList.append(category)
                     }
                 }
+                self.lbTest.text = "\(myList.count)"
+                DispatchQueue.main.async {
+                    self.categories = myList
+                    self.categoryTableView.reloadData()
+                }
             }
-            
         }
         
     }
@@ -72,7 +70,6 @@ extension CategoryController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
-        //cell.setUp(data: locations[indexPath.row])
         cell.setUp(data: categories[indexPath.row])
         return cell
     }
