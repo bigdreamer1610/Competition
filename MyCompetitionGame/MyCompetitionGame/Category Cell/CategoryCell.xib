@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="133" id="KGk-i7-Jjw" customClass="CategoryCell" customModule="MyCompetitionGame" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="133"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="133"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBB-jg-N4Q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="133"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ep2-c8-okH">
+                                <rect key="frame" x="30" y="83" width="142.5" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <state key="normal" title="View Question List"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQU-hk-5HC">
+                                <rect key="frame" x="202.5" y="83" width="142.5" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <state key="normal" title="Take test"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKF-GQ-Jqf">
+                                <rect key="frame" x="30" y="30" width="47.5" height="27.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.83346000206425752" blue="0.5994539698081649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ep2-c8-okH" secondAttribute="bottom" constant="20" id="0hY-Fc-TXp"/>
+                            <constraint firstItem="tQU-hk-5HC" firstAttribute="leading" secondItem="ep2-c8-okH" secondAttribute="trailing" constant="30" id="2QK-ga-CMC"/>
+                            <constraint firstItem="tQU-hk-5HC" firstAttribute="height" secondItem="ep2-c8-okH" secondAttribute="height" id="2e5-gg-g09"/>
+                            <constraint firstItem="nKF-GQ-Jqf" firstAttribute="leading" secondItem="IBB-jg-N4Q" secondAttribute="leading" constant="30" id="38X-H9-Tma"/>
+                            <constraint firstItem="tQU-hk-5HC" firstAttribute="centerY" secondItem="ep2-c8-okH" secondAttribute="centerY" id="BpA-OK-ZkZ"/>
+                            <constraint firstItem="nKF-GQ-Jqf" firstAttribute="top" secondItem="IBB-jg-N4Q" secondAttribute="top" constant="30" id="bzI-cM-MbP"/>
+                            <constraint firstItem="tQU-hk-5HC" firstAttribute="width" secondItem="ep2-c8-okH" secondAttribute="width" id="hgf-5m-oAb"/>
+                            <constraint firstItem="ep2-c8-okH" firstAttribute="width" secondItem="IBB-jg-N4Q" secondAttribute="width" multiplier="1/2" constant="-45" id="hxs-NI-Fdq"/>
+                            <constraint firstItem="ep2-c8-okH" firstAttribute="height" secondItem="IBB-jg-N4Q" secondAttribute="height" multiplier="0.225564" id="nxR-C1-puN"/>
+                            <constraint firstItem="ep2-c8-okH" firstAttribute="leading" secondItem="IBB-jg-N4Q" secondAttribute="leading" constant="30" id="oLz-mN-Y3C"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="IBB-jg-N4Q" secondAttribute="bottom" id="3pR-sI-AaB"/>
+                    <constraint firstItem="IBB-jg-N4Q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="BwN-kV-VVR"/>
+                    <constraint firstItem="IBB-jg-N4Q" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="OmA-BN-EPD"/>
+                    <constraint firstAttribute="trailing" secondItem="IBB-jg-N4Q" secondAttribute="trailing" id="vMv-yt-W9b"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnTakeTest" destination="tQU-hk-5HC" id="z4w-Ei-qam"/>
+                <outlet property="btnView" destination="ep2-c8-okH" id="Wc3-Tm-YpD"/>
+                <outlet property="lbName" destination="nKF-GQ-Jqf" id="aS3-fS-aq8"/>
+            </connections>
+            <point key="canvasLocation" x="171.73913043478262" y="155.69196428571428"/>
+        </tableViewCell>
+    </objects>
+</document>
