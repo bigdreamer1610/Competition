@@ -20,7 +20,6 @@ class CategoryController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         retrieveDataCategory()
-        
         print("hmm: \(categories.count)")
         let nib = UINib(nibName: "CategoryCell", bundle: nil)
         categoryTableView.register(nib, forCellReuseIdentifier: "CategoryCell")
@@ -29,8 +28,9 @@ class CategoryController: UIViewController {
     }
 
     
+    
     func retrieveDataCategory(){
-        var myList = [Category]()
+        //var myList = [Category]()
         MyDatabase.ref.child("Category").observeSingleEvent(of: .value) {[weak self] (snapshot) in
             guard let `self` = self else {
                 return
@@ -42,12 +42,10 @@ class CategoryController: UIViewController {
                        let categoryid = value["categoryid"] as? Int
                         let name = value["name"] as? String
                         let category = Category(categoryid: categoryid!, name: name!)
-                        myList.append(category)
+                        self.categories.append(category)
                     }
                 }
-                self.lbTest.text = "\(myList.count)"
                 DispatchQueue.main.async {
-                    self.categories = myList
                     self.categoryTableView.reloadData()
                 }
             }
@@ -70,7 +68,25 @@ extension CategoryController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
+        cell.delegate = self
         cell.setUp(data: categories[indexPath.row])
         return cell
     }
+    
 }
+
+extension CategoryController : CategoryCellDelegate {
+    func didTapButton(with title: String, cateid: Int) {
+        if title == "View" {
+                print("View")
+            print(cateid)
+                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Question_vc") as? QuestionListViewController
+            vc?.cateid = cateid
+                self.navigationController?.pushViewController(vc!, animated: true)
+            } else {
+                print("idk")
+        }
+    }
+        
+}
+

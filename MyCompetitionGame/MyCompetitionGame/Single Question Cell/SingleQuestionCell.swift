@@ -10,6 +10,7 @@ import UIKit
 
 class SingleQuestionCell: UITableViewCell {
 
+    @IBOutlet var lbQuestion: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +20,10 @@ class SingleQuestionCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setUpQuestion(data: Question){
+        lbQuestion.text = data.content
     }
     
 }

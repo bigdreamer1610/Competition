@@ -8,11 +8,18 @@
 
 import UIKit
 
+protocol CategoryCellDelegate: AnyObject {
+    func didTapButton(with title: String, cateid: Int)
+}
+
 class CategoryCell: UITableViewCell {
 
     @IBOutlet var btnTakeTest: UIButton!
     @IBOutlet var btnView: UIButton!
     @IBOutlet var lbName: UILabel!
+    var cateid: Int = 0
+    
+    var delegate: CategoryCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,5 +32,14 @@ class CategoryCell: UITableViewCell {
     }
     func setUp(data: Category) {
         lbName.text = data.name
+        cateid = data.categoryid
+    }
+
+    
+    @IBAction func clickTakeTest(_ sender: Any) {
+        delegate?.didTapButton(with: "Take", cateid: cateid)
+    }
+    @IBAction func clickView(_ sender: Any) {
+        delegate?.didTapButton(with: "View", cateid: cateid)
     }
 }

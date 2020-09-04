@@ -432,7 +432,7 @@
                         <viewLayoutGuide key="safeArea" id="1iC-jr-PT2"/>
                     </view>
                     <connections>
-                        <outlet property="questionTableView" destination="6Kr-l1-xG7" id="2Wl-mn-4Ar"/>
+                        <outlet property="questionTableView" destination="6Kr-l1-xG7" id="6yT-Ce-eRr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UT1-fX-Yhg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
