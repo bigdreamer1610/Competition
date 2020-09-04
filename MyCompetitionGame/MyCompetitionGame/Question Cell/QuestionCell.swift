@@ -8,23 +8,33 @@
 
 import UIKit
 
+protocol QuestionCellDelegate {
+    func didChooseOption(with index: Int)
+}
 
 class QuestionCell: UITableViewCell {
 
     @IBOutlet var lbQuestion: UILabel!
-    
     @IBOutlet var optionD: UILabel!
     @IBOutlet var optionC: UILabel!
-    @IBOutlet var optionB: UILabel!
     @IBOutlet var optionA: UILabel!
+    
+    @IBOutlet var optionB: UILabel!
     @IBOutlet var btnD: UIButton!
     @IBOutlet var btnC: UIButton!
     @IBOutlet var btnB: UIButton!
     @IBOutlet var btnA: UIButton!
     var quesid: Int = 0
+    var options = [String]()
+    var delegate: QuestionCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        //set up radio button
+        btnA.imageView?.contentMode = .scaleAspectFit
+        btnB.imageView?.contentMode = .scaleAspectFit
+        btnC.imageView?.contentMode = .scaleAspectFit
+        btnD.imageView?.contentMode = .scaleAspectFill
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,10 +43,15 @@ class QuestionCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setUp(data: Question){
-        lbQuestion.text = "Question: \(data.content)"
+    func setUp(data: Question, index: Int){
+        lbQuestion.text = "Question \(index): \(data.content)"
         quesid = data.questionid
-        setOptionValue(opA: data.falseAns1, opB: data.falseAns2, opC: data.falseAns3, opD: data.trueAns)
+        options.append(data.falseAns1)
+        options.append(data.falseAns2)
+        options.append(data.falseAns3)
+        options.append(data.trueAns)
+        options.shuffle()
+        setOptionValue(opA: options[0], opB: options[1], opC: options[2], opD: options[3])
         setButtonState(stateA: false, stateB: false, stateC: false, stateD: false)
     }
     
@@ -57,6 +72,7 @@ class QuestionCell: UITableViewCell {
         } else if sender.tag == 4 {
             setButtonState(stateA: false, stateB: false, stateC: false, stateD: true)
         }
+        delegate?.didChooseOption(with: sender.tag)
     }
     
     func setButtonState(stateA: Bool,stateB: Bool,stateC: Bool,stateD: Bool){
@@ -65,4 +81,6 @@ class QuestionCell: UITableViewCell {
         btnC.isSelected = stateC
         btnD.isSelected = stateD
     }
+    
+    
 }

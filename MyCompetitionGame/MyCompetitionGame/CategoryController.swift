@@ -11,7 +11,7 @@ import Firebase
 import FirebaseDatabase
 
 class CategoryController: UIViewController {
-
+    
     @IBOutlet var categoryTableView: UITableView!
     var categories = [Category]()
     var myChild = "Category"
@@ -26,7 +26,7 @@ class CategoryController: UIViewController {
         categoryTableView.delegate = self
         categoryTableView.dataSource = self
     }
-
+    
     
     
     func retrieveDataCategory(){
@@ -39,7 +39,7 @@ class CategoryController: UIViewController {
                 for snap in snapshots {
                     print(snap.key)
                     if let value = snap.value as? [String : Any] {
-                       let categoryid = value["categoryid"] as? Int
+                        let categoryid = value["categoryid"] as? Int
                         let name = value["name"] as? String
                         let category = Category(categoryid: categoryid!, name: name!)
                         self.categories.append(category)
@@ -52,7 +52,7 @@ class CategoryController: UIViewController {
         }
         
     }
-
+    
 }
 
 extension CategoryController : UITableViewDelegate {
@@ -78,15 +78,16 @@ extension CategoryController : UITableViewDataSource {
 extension CategoryController : CategoryCellDelegate {
     func didTapButton(with title: String, cateid: Int) {
         if title == "View" {
-                print("View")
             print(cateid)
-                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Question_vc") as? QuestionListViewController
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Question_vc") as? QuestionListViewController
             vc?.cateid = cateid
-                self.navigationController?.pushViewController(vc!, animated: true)
-            } else {
-                print("idk")
+            self.navigationController?.pushViewController(vc!, animated: true)
+        } else {
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Test_vc") as? TestController
+            vc?.cateid = cateid
+            self.navigationController?.pushViewController(vc!, animated: true)
         }
     }
-        
+    
 }
 

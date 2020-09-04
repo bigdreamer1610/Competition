@@ -53,6 +53,7 @@ class QuestionListViewController: UIViewController {
                         
                     }
                 }
+                print(self.questions.count)
                 self.questionTableView.reloadData()
             }
         }
@@ -65,7 +66,6 @@ class QuestionListViewController: UIViewController {
                 questionsByCate.append(ques)
             }
         }
-        print(questionsByCate.count)
     }
     
 }

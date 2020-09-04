@@ -312,6 +312,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2qt-w7-EEF"/>
                     </view>
+                    <connections>
+                        <outlet property="lbBackToMenu" destination="nMI-iN-h2c" id="ps1-pX-1yD"/>
+                        <outlet property="lbScore" destination="HMP-Wi-nJY" id="n0E-gy-TRu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YPb-Sp-DBP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -347,6 +351,9 @@
                                         <state key="normal" title="Submit">
                                             <color key="titleColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="submitTest:" destination="MDN-Da-Y3F" eventType="touchUpInside" id="D6G-oA-60N"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -383,6 +390,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ibt-Ob-TlM"/>
                     </view>
+                    <connections>
+                        <outlet property="btnSubmit" destination="K6g-kF-e3c" id="9l1-EG-vYE"/>
+                        <outlet property="lbCategory" destination="O7O-Me-6Tc" id="qgP-0R-P01"/>
+                        <outlet property="testTableView" destination="pPj-na-w9H" id="Tou-dM-d0R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C6Q-eO-Iwt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
