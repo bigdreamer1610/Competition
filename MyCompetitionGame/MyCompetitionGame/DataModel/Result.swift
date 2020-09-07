@@ -14,9 +14,9 @@ struct Result: Codable {
     var categoryid: Int
     var result: Int
     var duration: Int
-    var time: Date
+    var time: String
     
-    init(resultid: Int,accountid: Int,categoryid: Int, result: Int,duration: Int, time: Date) {
+    init(resultid: Int,accountid: Int,categoryid: Int, result: Int,duration: Int, time: String) {
         self.resultid = resultid
         self.accountid = accountid
         self.categoryid = categoryid

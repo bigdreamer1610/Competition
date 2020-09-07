@@ -10,12 +10,17 @@ import Foundation
 
 struct Account: Codable {
     var id: Int
-    var account: String
+    var name: String
+    var mail: String
+    var facebookid: String
     var typeid: Int
     
-    init(id: Int, account: String, typeid: Int) {
+    init(id: Int,name: String,mail: String,facebookid: String, typeid: Int) {
         self.id = id
-        self.account = account
+        self.name = name
+        self.mail = mail
+        self.facebookid = facebookid
         self.typeid = typeid
     }
+
 }

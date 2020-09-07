@@ -31,6 +31,9 @@
 		73E422612500E09A004A80C8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E422602500E09A004A80C8 /* MenuViewController.swift */; };
 		73E422632500E0C3004A80C8 /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E422622500E0C3004A80C8 /* CategoryController.swift */; };
 		73E422652500E0D3004A80C8 /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E422642500E0D3004A80C8 /* TestController.swift */; };
+		73E949172505E76100139ACE /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E949152505E76100139ACE /* HistoryCell.swift */; };
+		73E949182505E76100139ACE /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73E949162505E76100139ACE /* HistoryCell.xib */; };
+		73E9491A2505E90300139ACE /* HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E949192505E90300139ACE /* HistoryController.swift */; };
 		73E95DC224FE50A20049B6DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73E95DC124FE50A20049B6DE /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +66,9 @@
 		73E422602500E09A004A80C8 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		73E422622500E0C3004A80C8 /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
 		73E422642500E0D3004A80C8 /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
+		73E949152505E76100139ACE /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		73E949162505E76100139ACE /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
+		73E949192505E90300139ACE /* HistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryController.swift; sourceTree = "<group>"; };
 		73E95DC124FE50A20049B6DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +115,7 @@
 		73B5CA3824FE4D4F004BD37C /* MyCompetitionGame */ = {
 			isa = PBXGroup;
 			children = (
+				73E949142505E74400139ACE /* History Cell */,
 				73E4224F2500C559004A80C8 /* Single Question Cell */,
 				73E422462500C196004A80C8 /* Question Cell */,
 				73E422412500BF7D004A80C8 /* Category Cell */,
@@ -126,6 +133,7 @@
 				73B5CA4424FE4D55004BD37C /* LaunchScreen.storyboard */,
 				73B5CA4724FE4D55004BD37C /* Info.plist */,
 				73C0AE7D2501FB9500933957 /* ResultController.swift */,
+				73E949192505E90300139ACE /* HistoryController.swift */,
 			);
 			path = MyCompetitionGame;
 			sourceTree = "<group>";
@@ -169,6 +177,15 @@
 			path = "Single Question Cell";
 			sourceTree = "<group>";
 		};
+		73E949142505E74400139ACE /* History Cell */ = {
+			isa = PBXGroup;
+			children = (
+				73E949152505E76100139ACE /* HistoryCell.swift */,
+				73E949162505E76100139ACE /* HistoryCell.xib */,
+			);
+			path = "History Cell";
+			sourceTree = "<group>";
+		};
 		A016A55BDAABE666B16C1651 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +207,7 @@
 				73B5CA3424FE4D4F004BD37C /* Resources */,
 				36062EECECC2796928DC998E /* [CP] Embed Pods Frameworks */,
 				73E95DC324FE53780049B6DE /* ShellScript */,
+				4AF282833017670EB9AB55F9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -240,6 +258,7 @@
 			files = (
 				73B5CA4624FE4D55004BD37C /* LaunchScreen.storyboard in Resources */,
 				73E4224A2500C206004A80C8 /* QuestionCell.xib in Resources */,
+				73E949182505E76100139ACE /* HistoryCell.xib in Resources */,
 				73E95DC224FE50A20049B6DE /* GoogleService-Info.plist in Resources */,
 				73E422452500BF94004A80C8 /* CategoryCell.xib in Resources */,
 				73B5CA4324FE4D55004BD37C /* Assets.xcassets in Resources */,
@@ -290,6 +309,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyCompetitionGame/Pods-MyCompetitionGame-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		4AF282833017670EB9AB55F9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyCompetitionGame/Pods-MyCompetitionGame-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyCompetitionGame/Pods-MyCompetitionGame-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyCompetitionGame/Pods-MyCompetitionGame-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		73E95DC324FE53780049B6DE /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -326,6 +362,8 @@
 				73E4225B2500DE07004A80C8 /* Account.swift in Sources */,
 				73E422592500DC8D004A80C8 /* QuestionListController.swift in Sources */,
 				73E422612500E09A004A80C8 /* MenuViewController.swift in Sources */,
+				73E949172505E76100139ACE /* HistoryCell.swift in Sources */,
+				73E9491A2505E90300139ACE /* HistoryController.swift in Sources */,
 				73E422492500C206004A80C8 /* QuestionCell.swift in Sources */,
 				73B5CA3C24FE4D4F004BD37C /* SceneDelegate.swift in Sources */,
 				73E422442500BF94004A80C8 /* CategoryCell.swift in Sources */,

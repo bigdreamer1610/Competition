@@ -23,6 +23,7 @@ class CategoryCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        customizeButton()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -41,5 +42,15 @@ class CategoryCell: UITableViewCell {
     }
     @IBAction func clickView(_ sender: Any) {
         delegate?.didTapButton(with: "View", cateid: cateid)
+    }
+    
+    func customizeButton(){
+        btnView.layer.cornerRadius = 10
+        btnView.layer.borderWidth = 1
+        btnView.layer.borderColor = UIColor.black.cgColor
+        
+        btnTakeTest.layer.cornerRadius = 10
+        btnTakeTest.layer.borderWidth = 1
+        btnTakeTest.layer.borderColor = UIColor.black.cgColor
     }
 }

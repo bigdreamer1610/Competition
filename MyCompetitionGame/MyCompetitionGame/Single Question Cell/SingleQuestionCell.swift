@@ -10,9 +10,12 @@ import UIKit
 
 class SingleQuestionCell: UITableViewCell {
 
+    
+    @IBOutlet var seperator: UIView!
     @IBOutlet var lbQuestion: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        customizeLayout()
         // Initialization code
     }
 
@@ -24,6 +27,21 @@ class SingleQuestionCell: UITableViewCell {
     
     func setUpQuestion(data: Question){
         lbQuestion.text = data.content
+    }
+    
+    func customizeLayout(){
+        /*
+         btnFacebook.backgroundColor = .clear
+         
+         btnFacebook.layer.cornerRadius = 20
+         btnFacebook.layer.borderWidth = 1
+         btnFacebook.layer.borderColor = UIColor.white.cgColor
+         */
+        
+        lbQuestion.layer.borderWidth = 0
+        lbQuestion.layer.cornerRadius = 0
+        lbQuestion.backgroundColor = .clear
+        seperator.backgroundColor = UIColor.green
     }
     
 }

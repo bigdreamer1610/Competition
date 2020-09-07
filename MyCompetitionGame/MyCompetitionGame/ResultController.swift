@@ -10,14 +10,26 @@ import UIKit
 
 class ResultController: UIViewController {
 
-    @IBOutlet var lbBackToMenu: UIButton!
+    
+    @IBOutlet var btnBackMenu: UIButton!
     @IBOutlet var lbScore: UILabel!
     var myScore: Int = 0
     var totalScore: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         lbScore.text = "\(myScore)/\(totalScore)"
+        customizeLayout()
         // Do any additional setup after loading the view.
+    }
+    
+    func customizeLayout(){
+        btnBackMenu.layer.cornerRadius = 10
+        btnBackMenu.layer.borderWidth = 1
+        btnBackMenu.layer.borderColor = UIColor.black.cgColor
+        
+        lbScore.layer.cornerRadius = 10
+        lbScore.backgroundColor = .clear
+        lbScore.layer.borderColor = UIColor.green.cgColor
     }
     
 
