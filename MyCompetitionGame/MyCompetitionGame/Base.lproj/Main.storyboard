@@ -41,6 +41,9 @@
                                 <state key="normal" title="Login with Facebook">
                                     <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="clickBtnFacebook:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vd0-n0-PL9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kWd-2l-RNJ">
                                 <rect key="frame" x="180" y="403" width="54" height="48"/>

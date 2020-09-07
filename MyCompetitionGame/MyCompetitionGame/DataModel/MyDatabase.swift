@@ -11,4 +11,14 @@ import Firebase
 import FirebaseDatabase
 class MyDatabase {
     static let ref = Database.database().reference()
+    static let user = UserDefaults.standard
+}
+
+struct keys {
+    static let name = "name"
+    static let email = "email"
+    static let facebookid = "fbid"
+    static let typeid = "typeid"
+    static let accountid = "accountid"
+    
 }

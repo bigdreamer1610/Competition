@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import FBSDKLoginKit
+import GoogleSignIn
 
 class MenuViewController: UIViewController {
 
@@ -18,12 +19,20 @@ class MenuViewController: UIViewController {
     @IBOutlet var lbHello: UILabel!
     @IBOutlet var btnLogout: UIButton!
     @IBOutlet var btnViewResult: UIButton!
+    var name: String = "aaa"
     //@IBOutlet var btnTakeTest: UIButton!
     var categories = [Category]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //print(MyDatabase.user.string(forKey: keys.name)!)
         customizeButton()
+        if MyDatabase.user.string(forKey: keys.name) == nil {
+            MyDatabase.user.set(name, forKey: keys.name)
+        } else {
+            name = MyDatabase.user.string(forKey: keys.name)!
+        }
+        lbHello.text = "Hello, \(name)"
 
         // Do any additional setup after loading the view.
     }
@@ -51,8 +60,12 @@ class MenuViewController: UIViewController {
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     @IBAction func clickLogout(_ sender: Any) {
+        GIDSignIn.sharedInstance()?.signOut()
         let loginManager = LoginManager()
         loginManager.logOut() // this is an instance function
+        MyDatabase.user.removeObject(forKey: keys.name)
+        MyDatabase.user.removeObject(forKey: keys.email)
+        MyDatabase.user.removeObject(forKey: keys.accountid)
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "View_vc") as? ViewController
         self.navigationController?.pushViewController(vc!, animated: true)
     }
