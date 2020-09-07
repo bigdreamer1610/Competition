@@ -38,9 +38,9 @@ class SingleQuestionCell: UITableViewCell {
          btnFacebook.layer.borderColor = UIColor.white.cgColor
          */
         
-        lbQuestion.layer.borderWidth = 0
-        lbQuestion.layer.cornerRadius = 0
-        lbQuestion.backgroundColor = .clear
+//        lbQuestion.layer.borderWidth = 1
+//        lbQuestion.layer.cornerRadius = 10
+//        lbQuestion.backgroundColor = .clear
         seperator.backgroundColor = UIColor.green
     }
     

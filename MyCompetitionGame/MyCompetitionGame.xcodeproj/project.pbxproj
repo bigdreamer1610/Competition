@@ -34,6 +34,7 @@
 		73E949172505E76100139ACE /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E949152505E76100139ACE /* HistoryCell.swift */; };
 		73E949182505E76100139ACE /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73E949162505E76100139ACE /* HistoryCell.xib */; };
 		73E9491A2505E90300139ACE /* HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E949192505E90300139ACE /* HistoryController.swift */; };
+		73E9491E250631DF00139ACE /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E9491D250631DF00139ACE /* ColorHelper.swift */; };
 		73E95DC224FE50A20049B6DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73E95DC124FE50A20049B6DE /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		73E949152505E76100139ACE /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		73E949162505E76100139ACE /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
 		73E949192505E90300139ACE /* HistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryController.swift; sourceTree = "<group>"; };
+		73E9491D250631DF00139ACE /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		73E95DC124FE50A20049B6DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +136,7 @@
 				73B5CA4724FE4D55004BD37C /* Info.plist */,
 				73C0AE7D2501FB9500933957 /* ResultController.swift */,
 				73E949192505E90300139ACE /* HistoryController.swift */,
+				73E9491D250631DF00139ACE /* ColorHelper.swift */,
 			);
 			path = MyCompetitionGame;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				73D6F80B2500E55300B7F3A7 /* MyDatabase.swift in Sources */,
 				73E4225B2500DE07004A80C8 /* Account.swift in Sources */,
 				73E422592500DC8D004A80C8 /* QuestionListController.swift in Sources */,
+				73E9491E250631DF00139ACE /* ColorHelper.swift in Sources */,
 				73E422612500E09A004A80C8 /* MenuViewController.swift in Sources */,
 				73E949172505E76100139ACE /* HistoryCell.swift in Sources */,
 				73E9491A2505E90300139ACE /* HistoryController.swift in Sources */,

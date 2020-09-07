@@ -31,7 +31,7 @@
                             <constraint firstAttribute="height" constant="162" id="kUF-AR-65O"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question 1: How do you differentiate between dumbness and stupidity?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kap-As-t8M">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question 1: How do you differentiate between dumbness and stupidity?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kap-As-t8M">
                         <rect key="frame" x="40" y="20" width="360" height="46.5"/>
                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                         <nil key="textColor"/>
@@ -65,7 +65,7 @@
                             <action selector="chooseOption:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Kzg-Bm-1eY"/>
                         </connections>
                     </button>
-                    <button opaque="NO" tag="3" contentMode="scaleAspectFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wxn-4D-qp1" userLabel="btnC">
+                    <button opaque="NO" tag="3" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wxn-4D-qp1" userLabel="btnC">
                         <rect key="frame" x="225" y="86.5" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="g23-AD-nOj"/>
@@ -160,6 +160,8 @@
             </tableViewCellContentView>
             <constraints>
                 <constraint firstItem="eM3-VI-NKh" firstAttribute="leading" secondItem="njF-e1-oar" secondAttribute="leading" constant="5" id="Hiy-f3-woH"/>
+                <constraint firstItem="njF-e1-oar" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tRG-db-CoU" secondAttribute="bottom" constant="5" id="XmW-vh-8n0"/>
+                <constraint firstItem="njF-e1-oar" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="CLN-B3-oh7" secondAttribute="bottom" constant="5" id="hE8-Ss-M8v"/>
                 <constraint firstItem="eM3-VI-NKh" firstAttribute="top" secondItem="njF-e1-oar" secondAttribute="top" constant="20" id="mAE-cZ-svZ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

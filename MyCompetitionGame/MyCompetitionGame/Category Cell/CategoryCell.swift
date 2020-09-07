@@ -14,6 +14,8 @@ protocol CategoryCellDelegate: AnyObject {
 
 class CategoryCell: UITableViewCell {
 
+    @IBOutlet var backView: UIView!
+    @IBOutlet var cateImage: UIImageView!
     @IBOutlet var btnTakeTest: UIButton!
     @IBOutlet var btnView: UIButton!
     @IBOutlet var lbName: UILabel!
@@ -52,5 +54,17 @@ class CategoryCell: UITableViewCell {
         btnTakeTest.layer.cornerRadius = 10
         btnTakeTest.layer.borderWidth = 1
         btnTakeTest.layer.borderColor = UIColor.black.cgColor
+        
+        //backView
+        backView.layer.shadowColor = UIColor.black.cgColor
+        backView.layer.shadowOpacity = 0.8
+        backView.layer.shadowOffset = .zero
+        
+        /*
+         yourView.layer.shadowColor = UIColor.black.cgColor
+         yourView.layer.shadowOpacity = 1
+         yourView.layer.shadowOffset = .zero
+         yourView.layer.shadowRadius = 10
+         */
     }
 }

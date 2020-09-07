@@ -30,6 +30,7 @@ class TestController: UIViewController {
     var timer:Timer!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
         setLabelCategory()
         
         getNewChildTitle()
@@ -77,7 +78,7 @@ class TestController: UIViewController {
         //add new object to firebase
         let newResult: [String : Any] = [
             "resultid" : Int(newChild)! as NSObject,
-            "accountid" : 2,
+            "accountid" : MyDatabase.user.integer(forKey: keys.accountid),
             "result" : result,
             "duration" : 600 - count,
             "time" : dateString,
@@ -146,7 +147,7 @@ class TestController: UIViewController {
     }
     
     
-
+    
     
     //get new child name
     func getNewChildTitle(){
@@ -158,7 +159,7 @@ class TestController: UIViewController {
                 for snap in snapshots.reversed() {
                     let keyString = snap.key
                     if let keyInt = Int(keyString){
-                    self.newChild = String(keyInt + 1)
+                        self.newChild = String(keyInt + 1)
                     }
                     break;
                 }
@@ -180,8 +181,24 @@ extension TestController : UITableViewDataSource {
         cell.index = indexPath.row
         cell.trueAnsIndex = systemArray[indexPath.row]
         cell.delegate = self
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        //var value = playerArray[indexPath.row]
+        let value = playerArray[indexPath.row]
+        if value != 0 {
+            switch value {
+            case 1:
+                cell.setButtonState(stateA: true, stateB: false, stateC: false, stateD: false)
+            case 2:
+                cell.setButtonState(stateA: false, stateB: true, stateC: false, stateD: false)
+            case 3:
+                cell.setButtonState(stateA: false, stateB: false, stateC: true, stateD: false)
+            default:
+                cell.setButtonState(stateA: false, stateB: false, stateC: true, stateD: true)
+            }
+        }
         return cell
     }
+    
 }
 
 extension TestController : QuestionCellDelegate {

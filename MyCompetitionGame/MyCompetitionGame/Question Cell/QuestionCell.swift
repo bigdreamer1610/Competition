@@ -18,7 +18,6 @@ class QuestionCell: UITableViewCell {
     @IBOutlet var optionD: UILabel!
     @IBOutlet var optionC: UILabel!
     @IBOutlet var optionA: UILabel!
-    
     @IBOutlet var optionB: UILabel!
     @IBOutlet var btnD: UIButton!
     @IBOutlet var btnC: UIButton!
@@ -62,17 +61,16 @@ class QuestionCell: UITableViewCell {
             setFalseValue(lb1: optionB, lb2: optionC, lb3: optionD)
         case 2:
             optionB.text = data.trueAns
-            setFalseValue(lb1: optionB, lb2: optionC, lb3: optionD)
+            setFalseValue(lb1: optionA, lb2: optionC, lb3: optionD)
         case 3:
             optionC.text = data.trueAns
-            setFalseValue(lb1: optionB, lb2: optionC, lb3: optionD)
+            setFalseValue(lb1: optionB, lb2: optionA, lb3: optionD)
         default:
             optionD.text = data.trueAns
-            setFalseValue(lb1: optionB, lb2: optionC, lb3: optionD)
+            setFalseValue(lb1: optionB, lb2: optionC, lb3: optionA)
         }
         setButtonState(stateA: false, stateB: false, stateC: false, stateD: false)
     }
-    
     
     func setFalseValue(lb1: UILabel,lb2: UILabel, lb3: UILabel){
         lb1.text = options[0]

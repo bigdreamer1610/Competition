@@ -34,10 +34,12 @@ class MenuViewController: UIViewController {
         }
         lbHello.text = "Hello, \(name)"
 
+        self.navigationItem.hidesBackButton = true
         // Do any additional setup after loading the view.
     }
     
     func customizeButton(){
+
         btnViewCate.backgroundColor = .clear
         btnViewCate.layer.cornerRadius = 15
         btnViewCate.layer.borderWidth = 1
@@ -50,11 +52,7 @@ class MenuViewController: UIViewController {
     }
     
     
-    
-    @IBAction func clickHistory(_ sender: Any) {
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "History_vc") as? HistoryController
-        self.navigationController?.pushViewController(vc!, animated: true)
-    }
+
     @IBAction func clickViewAllCate(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Category_vc") as? CategoryController
         self.navigationController?.pushViewController(vc!, animated: true)
@@ -70,9 +68,12 @@ class MenuViewController: UIViewController {
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
-    @IBAction func clickTakeTest(_ sender: Any) {
-    }
     
     @IBAction func clickViewResult(_ sender: Any) {
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "History_vc") as? HistoryController
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    func UIColorFromRGB(_ rgbValue: Int) -> UIColor {
+        return UIColor(red: ((CGFloat)((rgbValue & 0xFF0000) >> 16))/255.0, green: ((CGFloat)((rgbValue & 0x00FF00) >> 8))/255.0, blue: ((CGFloat)((rgbValue & 0x0000FF)))/255.0, alpha: 1.0)
     }
 }

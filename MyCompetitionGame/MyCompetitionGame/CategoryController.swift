@@ -10,25 +10,34 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
+struct Item {
+    var imageName: String
+}
 class CategoryController: UIViewController {
     
     @IBOutlet var categoryTableView: UITableView!
     var categories = [Category]()
     var myChild = "Category"
+    var items: [Item] = [Item(imageName: "back1"),
+                            Item(imageName: "back2"),
+                            Item(imageName: "back3"),
+                            Item(imageName: "back4"),
+                            Item(imageName: "back5"),
+                            Item(imageName: "back6"),
+                            Item(imageName: "back7"),
+                            Item(imageName: "back8")]
     
     @IBOutlet var lbTest: UILabel!
+    var refreshControl: UIRefreshControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         retrieveDataCategory()
         print("hmm: \(categories.count)")
         let nib = UINib(nibName: "CategoryCell", bundle: nil)
         categoryTableView.register(nib, forCellReuseIdentifier: "CategoryCell")
-        categoryTableView.delegate = self
         categoryTableView.dataSource = self
+        
     }
-    
-    
-    
     func retrieveDataCategory(){
         //var myList = [Category]()
         MyDatabase.ref.child("Category").observeSingleEvent(of: .value) {[weak self] (snapshot) in
@@ -45,20 +54,12 @@ class CategoryController: UIViewController {
                         self.categories.append(category)
                     }
                 }
-                DispatchQueue.main.async {
-                    self.categoryTableView.reloadData()
-                }
+                self.categoryTableView.reloadData()
             }
         }
         
     }
     
-}
-
-extension CategoryController : UITableViewDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return categories.count
-    }
 }
 
 extension CategoryController : UITableViewDataSource {
@@ -70,6 +71,8 @@ extension CategoryController : UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
         cell.delegate = self
         cell.setUp(data: categories[indexPath.row])
+        cell.cateImage.image = UIImage(named: items[indexPath.item].imageName)
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
     }
     

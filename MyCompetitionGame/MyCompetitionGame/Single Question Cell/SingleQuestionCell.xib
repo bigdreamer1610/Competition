@@ -16,18 +16,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="357" height="77"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whe will the rain fall?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNS-H8-hZ5">
-                        <rect key="frame" x="10" y="0.0" width="337" height="60"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whe will the rain fall?" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNS-H8-hZ5">
+                        <rect key="frame" x="10" y="5" width="337" height="60"/>
                         <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="vtY-82-ebU"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9DT-zQ-Z1T">
-                        <rect key="frame" x="10" y="65" width="337" height="3"/>
+                        <rect key="frame" x="10" y="70" width="337" height="3"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="3" id="bw5-5z-14p"/>
@@ -38,10 +38,10 @@
                     <constraint firstItem="9DT-zQ-Z1T" firstAttribute="top" secondItem="MNS-H8-hZ5" secondAttribute="bottom" constant="5" id="7jR-Gn-Khf"/>
                     <constraint firstItem="MNS-H8-hZ5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="DcJ-cM-ezn"/>
                     <constraint firstAttribute="trailing" secondItem="MNS-H8-hZ5" secondAttribute="trailing" constant="10" id="fjU-g2-2j3"/>
-                    <constraint firstItem="MNS-H8-hZ5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="g6l-1x-2EN"/>
+                    <constraint firstItem="MNS-H8-hZ5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="g6l-1x-2EN"/>
                     <constraint firstItem="9DT-zQ-Z1T" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="gmM-g5-4Tr"/>
                     <constraint firstAttribute="trailing" secondItem="9DT-zQ-Z1T" secondAttribute="trailing" constant="10" id="r6m-8R-QQT"/>
-                    <constraint firstAttribute="bottom" secondItem="9DT-zQ-Z1T" secondAttribute="bottom" constant="5" id="xrg-nw-Td7"/>
+                    <constraint firstAttribute="bottom" secondItem="9DT-zQ-Z1T" secondAttribute="bottom" id="xrg-nw-Td7"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

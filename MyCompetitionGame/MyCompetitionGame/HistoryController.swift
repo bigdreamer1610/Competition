@@ -12,11 +12,12 @@ import FirebaseDatabase
 
 class HistoryController: UIViewController {
 
+    
+    @IBOutlet var lbError: UILabel!
     var results = [Result]()
     @IBOutlet var historyTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         retrieveDataResult()
         let nib = UINib(nibName: "HistoryCell", bundle: nil)
         historyTableView.register(nib, forCellReuseIdentifier: "HistoryCell")
@@ -42,12 +43,17 @@ class HistoryController: UIViewController {
                         let time = value["time"] as? String
                         let categoryid = value["categoryid"] as? Int
                         let history = Result(resultid: resultid!, accountid: accountid!, categoryid: categoryid!, result: result!, duration: duration!, time: time!)
-                        if accountid == 1 {
+                        if accountid == MyDatabase.user.integer(forKey: keys.accountid) {
                             self.results.append(history)
                         }
                     }
                 }
                 print(self.results.count)
+                if self.results.count == 0 {
+                    self.lbError.isHidden = false
+                } else {
+                    self.lbError.isHidden = true
+                }
                 self.historyTableView.reloadData()
             }
         }
@@ -65,6 +71,8 @@ extension HistoryController : UITableViewDataSource {
         cell.setUpData(with: results[indexPath.row])
         return cell
     }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.count
     }
