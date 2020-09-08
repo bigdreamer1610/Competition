@@ -30,16 +30,16 @@ class ViewController: UIViewController, GIDSignInDelegate {
         GIDSignIn.sharedInstance()?.delegate = self
     }
     
-    func convertDate(){
-        let myDate = "12-02-2020 09:20:19"
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "vi_VN")
-        dateFormatter.dateFormat = "dd-MM-yyyy hh:mm:ss"
-        let date = dateFormatter.date(from: myDate)
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date!)
-        
-    }
+//    func convertDate(){
+//        let myDate = "12-02-2020 09:20:19"
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.locale = Locale(identifier: "vi_VN")
+//        dateFormatter.dateFormat = "dd-MM-yyyy hh:mm:ss"
+//        let date = dateFormatter.date(from: myDate)
+//        let calendar = Calendar.current
+//        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date!)
+//
+//    }
     
     //set navigation bar of the first screen disappear
     override func viewWillAppear(_ animated: Bool) {
@@ -71,8 +71,7 @@ class ViewController: UIViewController, GIDSignInDelegate {
                 //store data to firebase
                 self.storeFBtoFirebase()
                 //push to menu
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "Menu_vc") as? MenuViewController
-                self.navigationController?.pushViewController(vc!, animated: true)
+                
             }
         }
         
@@ -123,6 +122,8 @@ class ViewController: UIViewController, GIDSignInDelegate {
                                         MyDatabase.user.set(name, forKey: keys.name)
                                         MyDatabase.user.set(email, forKey: keys.email)
                                         MyDatabase.user.set(thisChild, forKey: keys.accountid)
+                                        print("FB sign in successfully")
+                                        
                                     }
                                 }
                                 
@@ -130,6 +131,12 @@ class ViewController: UIViewController, GIDSignInDelegate {
                             }
                         }
                     }
+                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "bridge") as? NavigationController
+                    //self.navigationController?.pushViewController(vc!, animated: true)
+                    vc?.modalTransitionStyle = .coverVertical
+                    vc?.modalPresentationStyle = .fullScreen
+                    self.present(vc!, animated: true, completion: nil)
+                    
                 }
             }
         }
