@@ -17,8 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whe will the rain fall?" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNS-H8-hZ5">
-                        <rect key="frame" x="10" y="5" width="337" height="60"/>
-                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <rect key="frame" x="23" y="5" width="324" height="60"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="vtY-82-ebU"/>
                         </constraints>
@@ -26,30 +25,29 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9DT-zQ-Z1T">
-                        <rect key="frame" x="10" y="70" width="337" height="3"/>
-                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4j-FW-fOn">
+                        <rect key="frame" x="10" y="5" width="3" height="60"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="3" id="bw5-5z-14p"/>
+                            <constraint firstAttribute="width" constant="3" id="zNj-k6-jbc"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="9DT-zQ-Z1T" firstAttribute="top" secondItem="MNS-H8-hZ5" secondAttribute="bottom" constant="5" id="7jR-Gn-Khf"/>
-                    <constraint firstItem="MNS-H8-hZ5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="DcJ-cM-ezn"/>
+                    <constraint firstItem="m4j-FW-fOn" firstAttribute="height" secondItem="MNS-H8-hZ5" secondAttribute="height" id="9HZ-lb-sRN"/>
+                    <constraint firstItem="m4j-FW-fOn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="VSf-oB-71Q"/>
                     <constraint firstAttribute="trailing" secondItem="MNS-H8-hZ5" secondAttribute="trailing" constant="10" id="fjU-g2-2j3"/>
                     <constraint firstItem="MNS-H8-hZ5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="g6l-1x-2EN"/>
-                    <constraint firstItem="9DT-zQ-Z1T" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="gmM-g5-4Tr"/>
-                    <constraint firstAttribute="trailing" secondItem="9DT-zQ-Z1T" secondAttribute="trailing" constant="10" id="r6m-8R-QQT"/>
-                    <constraint firstAttribute="bottom" secondItem="9DT-zQ-Z1T" secondAttribute="bottom" id="xrg-nw-Td7"/>
+                    <constraint firstAttribute="bottom" secondItem="MNS-H8-hZ5" secondAttribute="bottom" constant="5" id="gy4-g8-dtc"/>
+                    <constraint firstItem="m4j-FW-fOn" firstAttribute="centerY" secondItem="MNS-H8-hZ5" secondAttribute="centerY" id="zSV-QT-eEo"/>
+                    <constraint firstItem="MNS-H8-hZ5" firstAttribute="leading" secondItem="m4j-FW-fOn" secondAttribute="trailing" constant="10" id="zkz-dg-HNx"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="lbQuestion" destination="MNS-H8-hZ5" id="xaB-0J-Pjb"/>
-                <outlet property="seperator" destination="9DT-zQ-Z1T" id="VwH-RG-GFk"/>
+                <outlet property="lbQuestion" destination="MNS-H8-hZ5" id="cwd-z5-c8s"/>
             </connections>
-            <point key="canvasLocation" x="158.69565217391306" y="136.94196428571428"/>
+            <point key="canvasLocation" x="157" y="135"/>
         </tableViewCell>
     </objects>
 </document>

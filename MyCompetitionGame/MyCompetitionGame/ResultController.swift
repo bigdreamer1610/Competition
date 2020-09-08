@@ -7,29 +7,42 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class ResultController: UIViewController {
 
     
+    
+    @IBOutlet var lbTotal: UILabel!
+    @IBOutlet var lbCate: UILabel!
     @IBOutlet var lbHey: UILabel!
     @IBOutlet var btnBackMenu: UIButton!
     @IBOutlet var lbScore: UILabel!
     var myScore: Int = 0
     var totalScore: Int = 0
+    var cateid: Int = 0
+    var categories = [Category]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
-        lbScore.text = "\(myScore)/\(totalScore)"
-        lbHey.text = "Hey \(MyDatabase.user.string(forKey: keys.name)!)"
+        getCategoryName()
+        lbScore.text = "\(myScore)"
+        lbTotal.text = "out of \(totalScore)"
         customizeLayout()
         // Do any additional setup after loading the view.
     }
     
     func customizeLayout(){
-        btnBackMenu.layer.cornerRadius = 10
-        btnBackMenu.layer.borderWidth = 1
+        btnBackMenu.layer.cornerRadius = 20
+        btnBackMenu.layer.borderWidth = 2
         btnBackMenu.layer.borderColor = UIColor.black.cgColor
+        btnBackMenu.backgroundColor = .clear
         btnBackMenu.layer.masksToBounds = true
+        
+        //lbCate
+        lbCate.layer.cornerRadius = 15
+        lbCate.layer.masksToBounds = true
         
         //gradient
         //btnBackMenu.applyGradient(colors: [UIColorFromRGB(0x2B95CE).cgColor,UIColorFromRGB(0x2ECAD5).cgColor])
@@ -48,6 +61,35 @@ class ResultController: UIViewController {
         return UIColor(red: ((CGFloat)((rgbValue & 0xFF0000) >> 16))/255.0, green: ((CGFloat)((rgbValue & 0x00FF00) >> 8))/255.0, blue: ((CGFloat)((rgbValue & 0x0000FF)))/255.0, alpha: 1.0)
     }
     
+    func getCategoryName(){
+        var myList = [Category]()
+        MyDatabase.ref.child("Category").observeSingleEvent(of: .value) {[weak self] (snapshot) in
+            guard let `self` = self else {
+                return
+            }
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshots {
+                    print(snap.key)
+                    if let value = snap.value as? [String : Any] {
+                        let categoryid = value["categoryid"] as? Int
+                        let name = value["name"] as? String
+                        let category = Category(categoryid: categoryid!, name: name!)
+                        myList.append(category)
+                    }
+                }
+                self.categories = myList
+                var cateName = ""
+                for c in self.categories {
+                    if c.categoryid == self.cateid{
+                        cateName = c.name
+                    }
+                }
+                self.lbCate.text = "Category: \(cateName)"
+            }
+        }
+        
+        
+    }
     
     
 }

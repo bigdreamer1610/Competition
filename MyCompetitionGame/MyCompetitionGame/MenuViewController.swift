@@ -39,13 +39,10 @@ class MenuViewController: UIViewController {
     }
     
     func customizeButton(){
-
-        btnViewCate.backgroundColor = .clear
         btnViewCate.layer.cornerRadius = 15
         btnViewCate.layer.borderWidth = 1
         btnViewCate.layer.borderColor = UIColor.black.cgColor
-        
-        btnViewResult.backgroundColor = .clear
+
         btnViewResult.layer.cornerRadius = 15
         btnViewResult.layer.borderWidth = 1
         btnViewResult.layer.borderColor = UIColor.black.cgColor

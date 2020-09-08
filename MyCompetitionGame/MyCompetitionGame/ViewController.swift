@@ -23,6 +23,7 @@ class ViewController: UIViewController, GIDSignInDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         retrieveDataQuestion()
+        self.navigationItem.hidesBackButton = true
         customizeButton()
         getAccountList()
         print(accounts.count)

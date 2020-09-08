@@ -13,12 +13,20 @@ import FirebaseDatabase
 class QuestionListViewController: UIViewController {
 
 
+    
+    @IBOutlet var heightConstant: NSLayoutConstraint!
+    @IBOutlet var indicator: UIActivityIndicatorView!
+    @IBOutlet var indicatorView: UIView!
     @IBOutlet var questionTableView: UITableView!
+    var refreshControl = UIRefreshControl()
     var questions = [Question]()
     var questionsByCate = [Question]()
     var cateid: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        heightConstant.constant = 0
+        indicator.isHidden = true
+        indicatorView.backgroundColor = .clear
         retrieveDataQuestion()
         fetchQuestionsByCateid(cateid: cateid)
         print("call: \(questions.count)")
@@ -30,7 +38,7 @@ class QuestionListViewController: UIViewController {
     }
     
     func retrieveDataQuestion(){
-       // var myList = [Question]()
+        var myQuestions = [Question]()
         MyDatabase.ref.child("Question").observeSingleEvent(of: .value) {[weak self] (snapshot) in
             guard let `self` = self else {
                 return
@@ -48,16 +56,41 @@ class QuestionListViewController: UIViewController {
                         let falseAns3 = value["falseAns3"] as? String
                         let question = Question(questionid: questionid!, categoryid: categoryid!, content: content!, trueAns: trueAns!, falseAns1: falseAns1!, falseAns2: falseAns2!, falseAns3: falseAns3!)
                         if question.categoryid == self.cateid {
-                            self.questions.append(question)
+                            myQuestions.append(question)
                         }
                         
                     }
                 }
-                print(self.questions.count)
+                self.questions = myQuestions
+                self.addRefreshControl()
                 self.questionTableView.reloadData()
             }
         }
         
+    }
+    
+    func addRefreshControl(){
+        self.refreshControl.tintColor = UIColor.clear
+        self.refreshControl.alpha = 0
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
+        self.refreshControl.attributedTitle = NSAttributedString(string: "", attributes: attributes)
+        self.refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: UIControl.Event.valueChanged)
+        self.questionTableView.addSubview(self.refreshControl)
+    }
+    
+    @objc func refresh(_ sender: UIRefreshControl){
+        retrieveDataQuestion()
+        //categoryTableView.reloadData()
+        indicator.startAnimating()
+        refreshControl.beginRefreshing()
+        indicator.isHidden = false
+        heightConstant.constant = 60
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.heightConstant.constant = 0
+            self.indicator.stopAnimating()
+            self.indicator.isHidden = true
+            self.refreshControl.endRefreshing()
+        }
     }
     
     func fetchQuestionsByCateid(cateid: Int){

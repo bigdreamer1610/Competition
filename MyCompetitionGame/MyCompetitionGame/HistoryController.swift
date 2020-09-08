@@ -13,21 +13,28 @@ import FirebaseDatabase
 class HistoryController: UIViewController {
 
     
+    
+    @IBOutlet var heightConstant: NSLayoutConstraint!
+    @IBOutlet var indicator: UIActivityIndicatorView!
+    @IBOutlet var indicatorView: UIView!
     @IBOutlet var lbError: UILabel!
     var results = [Result]()
     @IBOutlet var historyTableView: UITableView!
+    var refreshControl = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
+        heightConstant.constant = 0
+        indicator.isHidden = true
+        indicatorView.backgroundColor = .clear
         retrieveDataResult()
         let nib = UINib(nibName: "HistoryCell", bundle: nil)
         historyTableView.register(nib, forCellReuseIdentifier: "HistoryCell")
-        historyTableView.delegate = self
         historyTableView.dataSource = self
         // Do any additional setup after loading the view.
     }
 
     func retrieveDataResult(){
-       // var myList = [Question]()
+        var myList = [Result]()
         MyDatabase.ref.child("Result").observeSingleEvent(of: .value) {[weak self] (snapshot) in
             guard let `self` = self else {
                 return
@@ -44,14 +51,15 @@ class HistoryController: UIViewController {
                         let categoryid = value["categoryid"] as? Int
                         let history = Result(resultid: resultid!, accountid: accountid!, categoryid: categoryid!, result: result!, duration: duration!, time: time!)
                         if accountid == MyDatabase.user.integer(forKey: keys.accountid) {
-                            self.results.append(history)
+                            myList.append(history)
                         }
                     }
                 }
-                print(self.results.count)
+                self.results = myList
                 if self.results.count == 0 {
                     self.lbError.isHidden = false
                 } else {
+                    self.addRefreshControl()
                     self.lbError.isHidden = true
                 }
                 self.historyTableView.reloadData()
@@ -59,11 +67,31 @@ class HistoryController: UIViewController {
         }
         
     }
+    
+    func addRefreshControl(){
+        self.refreshControl.tintColor = UIColor.clear
+        self.refreshControl.alpha = 0
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
+        self.refreshControl.attributedTitle = NSAttributedString(string: "", attributes: attributes)
+        self.refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: UIControl.Event.valueChanged)
+        self.historyTableView.addSubview(self.refreshControl)
+    }
+    
+    @objc func refresh(_ sender: UIRefreshControl){
+        retrieveDataResult()
+        indicator.startAnimating()
+        refreshControl.beginRefreshing()
+        indicator.isHidden = false
+        heightConstant.constant = 60
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.heightConstant.constant = 0
+            self.indicator.stopAnimating()
+            self.indicator.isHidden = true
+            self.refreshControl.endRefreshing()
+        }
+    }
 }
 
-extension HistoryController : UITableViewDelegate {
-    
-}
 
 extension HistoryController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

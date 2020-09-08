@@ -53,7 +53,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back1" translatesAutoresizingMaskIntoConstraints="NO" id="VL9-B9-Ew2">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="138.5"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icontag" translatesAutoresizingMaskIntoConstraints="NO" id="flR-NZ-BH0">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icontag2" translatesAutoresizingMaskIntoConstraints="NO" id="flR-NZ-BH0">
                                 <rect key="frame" x="335" y="153.5" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="GrF-Jm-7Qn"/>
@@ -104,6 +104,6 @@
     </objects>
     <resources>
         <image name="back1" width="3882" height="2584"/>
-        <image name="icontag" width="128" height="128"/>
+        <image name="icontag2" width="80" height="80"/>
     </resources>
 </document>

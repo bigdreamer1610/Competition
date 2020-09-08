@@ -28,18 +28,24 @@ class CategoryController: UIViewController {
                             Item(imageName: "back8")]
     
     @IBOutlet var lbTest: UILabel!
-    var refreshControl: UIRefreshControl!
+    var refreshControl = UIRefreshControl()
+    @IBOutlet var indicatorView: UIView!
+    @IBOutlet var indicator: UIActivityIndicatorView!
+    
+    @IBOutlet var heightConstant: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
+        indicatorView.backgroundColor = UIColor.clear
         retrieveDataCategory()
-        print("hmm: \(categories.count)")
+        heightConstant.constant = 0
+        indicator.isHidden = true
         let nib = UINib(nibName: "CategoryCell", bundle: nil)
         categoryTableView.register(nib, forCellReuseIdentifier: "CategoryCell")
         categoryTableView.dataSource = self
         
     }
     func retrieveDataCategory(){
-        //var myList = [Category]()
+        var myCategories = [Category]()
         MyDatabase.ref.child("Category").observeSingleEvent(of: .value) {[weak self] (snapshot) in
             guard let `self` = self else {
                 return
@@ -51,13 +57,39 @@ class CategoryController: UIViewController {
                         let categoryid = value["categoryid"] as? Int
                         let name = value["name"] as? String
                         let category = Category(categoryid: categoryid!, name: name!)
-                        self.categories.append(category)
+                        myCategories.append(category)
                     }
                 }
+                self.categories = myCategories
+                self.addRefreshControl()
                 self.categoryTableView.reloadData()
             }
         }
         
+    }
+    
+    func addRefreshControl(){
+        self.refreshControl.tintColor = UIColor.clear
+        self.refreshControl.alpha = 0
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
+        self.refreshControl.attributedTitle = NSAttributedString(string: "", attributes: attributes)
+        self.refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: UIControl.Event.valueChanged)
+        self.categoryTableView.addSubview(self.refreshControl)
+    }
+    
+    @objc func refresh(_ sender: UIRefreshControl){
+        retrieveDataCategory()
+        //categoryTableView.reloadData()
+        indicator.startAnimating()
+        refreshControl.beginRefreshing()
+        indicator.isHidden = false
+        heightConstant.constant = 60
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.heightConstant.constant = 0
+            self.indicator.stopAnimating()
+            self.indicator.isHidden = true
+            self.refreshControl.endRefreshing()
+        }
     }
     
 }

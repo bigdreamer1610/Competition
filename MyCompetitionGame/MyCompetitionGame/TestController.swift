@@ -68,6 +68,7 @@ class TestController: UIViewController {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Result_vc") as? ResultController
         vc?.myScore = result
         vc?.totalScore = systemArray.count
+        vc?.cateid = cateid
         print("new value: \(newChild)")
         //date
         let date = Date()
