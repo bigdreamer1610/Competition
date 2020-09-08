@@ -25,7 +25,6 @@ class QuestionListViewController: UIViewController {
     var cateid: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.hidesBackButton = false
         heightConstant.constant = 0
         centerIndicator.isHidden = true
@@ -33,7 +32,6 @@ class QuestionListViewController: UIViewController {
         indicatorView.backgroundColor = .clear
         retrieveDataQuestion()
         fetchQuestionsByCateid(cateid: cateid)
-        // Do any additional setup after loading the view.
         let nib = UINib(nibName: "SingleQuestionCell", bundle: nil)
         questionTableView.register(nib, forCellReuseIdentifier: "SingleQuestionCell")
         questionTableView.dataSource = self
@@ -45,7 +43,6 @@ class QuestionListViewController: UIViewController {
             centerIndicator.isHidden = false
             questionTableView.isHidden = true
         }
-        
         var myQuestions = [Question]()
         MyDatabase.ref.child("Question").observeSingleEvent(of: .value) {[weak self] (snapshot) in
             guard let `self` = self else {

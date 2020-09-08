@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D51ECA4E9F69FE5EAE86C98 /* Pods_MyCompetitionGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491954CA6F52F4E2649D48C3 /* Pods_MyCompetitionGame.framework */; };
+		73667C452507865E008810B5 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73667C442507865E008810B5 /* NavigationController.swift */; };
 		73B5CA3A24FE4D4F004BD37C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B5CA3924FE4D4F004BD37C /* AppDelegate.swift */; };
 		73B5CA3C24FE4D4F004BD37C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B5CA3B24FE4D4F004BD37C /* SceneDelegate.swift */; };
 		73B5CA3E24FE4D4F004BD37C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B5CA3D24FE4D4F004BD37C /* ViewController.swift */; };
@@ -43,6 +44,7 @@
 		1519D5208B496ACA46985625 /* Pods-MyCompetitionGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCompetitionGame.release.xcconfig"; path = "Target Support Files/Pods-MyCompetitionGame/Pods-MyCompetitionGame.release.xcconfig"; sourceTree = "<group>"; };
 		1F5E4EC42CB6B3B2BB59E28B /* Pods-MyCompetitionGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCompetitionGame.debug.xcconfig"; path = "Target Support Files/Pods-MyCompetitionGame/Pods-MyCompetitionGame.debug.xcconfig"; sourceTree = "<group>"; };
 		491954CA6F52F4E2649D48C3 /* Pods_MyCompetitionGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCompetitionGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73667C442507865E008810B5 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		73B5CA3624FE4D4F004BD37C /* MyCompetitionGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCompetitionGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73B5CA3924FE4D4F004BD37C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73B5CA3B24FE4D4F004BD37C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,15 +133,16 @@
 				73E422642500E0D3004A80C8 /* TestController.swift */,
 				73E422602500E09A004A80C8 /* MenuViewController.swift */,
 				73E422562500DB8F004A80C8 /* QuestionListViewController.swift */,
+				73C0AE7D2501FB9500933957 /* ResultController.swift */,
+				73E949192505E90300139ACE /* HistoryController.swift */,
 				73B5CA3D24FE4D4F004BD37C /* ViewController.swift */,
 				73B5CA3F24FE4D4F004BD37C /* Main.storyboard */,
 				73B5CA4224FE4D55004BD37C /* Assets.xcassets */,
 				73B5CA4424FE4D55004BD37C /* LaunchScreen.storyboard */,
 				73B5CA4724FE4D55004BD37C /* Info.plist */,
-				73C0AE7D2501FB9500933957 /* ResultController.swift */,
-				73E949192505E90300139ACE /* HistoryController.swift */,
 				73E9491D250631DF00139ACE /* ColorHelper.swift */,
 				73DB9C9C25073F7A00BE08DA /* PopAnimation.swift */,
+				73667C442507865E008810B5 /* NavigationController.swift */,
 			);
 			path = MyCompetitionGame;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				73E422572500DB8F004A80C8 /* QuestionListViewController.swift in Sources */,
 				73D6F80B2500E55300B7F3A7 /* MyDatabase.swift in Sources */,
 				73E4225B2500DE07004A80C8 /* Account.swift in Sources */,
+				73667C452507865E008810B5 /* NavigationController.swift in Sources */,
 				73E422592500DC8D004A80C8 /* QuestionListController.swift in Sources */,
 				73E9491E250631DF00139ACE /* ColorHelper.swift in Sources */,
 				73E422612500E09A004A80C8 /* MenuViewController.swift in Sources */,

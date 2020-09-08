@@ -71,9 +71,10 @@ class MenuViewController: UIViewController {
         MyDatabase.user.removeObject(forKey: keys.name)
         MyDatabase.user.removeObject(forKey: keys.email)
         MyDatabase.user.removeObject(forKey: keys.accountid)
-//        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "View_vc") as? ViewController
-//        vc?.modalTransitionStyle = .flipHorizontal
-//        self.navigationController?.pushViewController(vc!, animated: true)
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "View_vc") as? ViewController
+        vc?.modalTransitionStyle = .flipHorizontal
+        vc?.modalPresentationStyle = .fullScreen
+        present(vc!, animated: true, completion: nil)
     }
     
     

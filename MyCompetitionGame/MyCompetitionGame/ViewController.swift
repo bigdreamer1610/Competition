@@ -38,7 +38,6 @@ class ViewController: UIViewController, GIDSignInDelegate {
         let date = dateFormatter.date(from: myDate)
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date!)
-        print("my components: \(components)")
         
     }
     
@@ -223,6 +222,7 @@ class ViewController: UIViewController, GIDSignInDelegate {
     //google
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let _ = error {
+            print("There is error")
             return
         }
         var thisChild: Int = 0
@@ -273,8 +273,11 @@ class ViewController: UIViewController, GIDSignInDelegate {
             MyDatabase.user.set(email, forKey: keys.email)
             MyDatabase.user.set(thisChild, forKey: keys.accountid)
         }
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "Menu_vc") as? MenuViewController
-        self.navigationController?.pushViewController(vc!, animated: true)
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "bridge") as? NavigationController
+        //self.navigationController?.pushViewController(vc!, animated: true)
+        vc?.modalTransitionStyle = .coverVertical
+        vc?.modalPresentationStyle = .fullScreen
+        present(vc!, animated: true, completion: nil)
     }
     
     func UIColorFromRGB(_ rgbValue: Int) -> UIColor {
