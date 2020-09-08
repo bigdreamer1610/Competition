@@ -26,12 +26,11 @@ class CategoryController: UIViewController {
                             Item(imageName: "back6"),
                             Item(imageName: "back7"),
                             Item(imageName: "back8")]
-    
-    @IBOutlet var lbTest: UILabel!
+
     var refreshControl = UIRefreshControl()
     @IBOutlet var indicatorView: UIView!
     @IBOutlet var indicator: UIActivityIndicatorView!
-    
+
     @IBOutlet var heightConstant: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()

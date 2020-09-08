@@ -70,7 +70,7 @@ class HistoryCell: UITableViewCell {
                 }
                 self.lbScore.text = "Score: \(data.result)"
                 self.lbCategory.text = "Category: \(cateName)"
-                self.lbTime.text = "Taken time: \(data.time)"
+                self.lbTime.text = "Date taken: \(data.time)"
             }
         }
         

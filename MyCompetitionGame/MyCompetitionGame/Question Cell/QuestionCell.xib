@@ -43,10 +43,10 @@
                             <constraint firstAttribute="height" constant="20" id="2an-EG-COe"/>
                             <constraint firstAttribute="width" constant="20" id="D4V-yd-ci4"/>
                         </constraints>
-                        <state key="normal" image="unchecked">
+                        <state key="normal" image="untick">
                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                         </state>
-                        <state key="selected" image="checked"/>
+                        <state key="selected" image="tick"/>
                         <connections>
                             <action selector="chooseOption:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iKF-gX-CUL"/>
                         </connections>
@@ -57,10 +57,10 @@
                             <constraint firstAttribute="height" constant="20" id="7rC-VH-1n2"/>
                             <constraint firstAttribute="width" constant="20" id="gDd-lX-4lR"/>
                         </constraints>
-                        <state key="normal" image="unchecked">
+                        <state key="normal" image="untick">
                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                         </state>
-                        <state key="selected" image="checked"/>
+                        <state key="selected" image="tick"/>
                         <connections>
                             <action selector="chooseOption:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Kzg-Bm-1eY"/>
                         </connections>
@@ -71,10 +71,10 @@
                             <constraint firstAttribute="height" constant="20" id="g23-AD-nOj"/>
                             <constraint firstAttribute="width" constant="20" id="v8x-bf-ZDh"/>
                         </constraints>
-                        <state key="normal" image="unchecked">
+                        <state key="normal" image="untick">
                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                         </state>
-                        <state key="selected" image="checked"/>
+                        <state key="selected" image="tick"/>
                         <connections>
                             <action selector="chooseOption:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YHV-T2-a43"/>
                         </connections>
@@ -85,10 +85,10 @@
                             <constraint firstAttribute="height" constant="20" id="L0e-LL-z0S"/>
                             <constraint firstAttribute="width" constant="20" id="oEg-HD-qjf"/>
                         </constraints>
-                        <state key="normal" image="unchecked">
+                        <state key="normal" image="untick">
                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                         </state>
-                        <state key="selected" image="checked"/>
+                        <state key="selected" image="tick"/>
                         <connections>
                             <action selector="chooseOption:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="H4K-SX-H64"/>
                         </connections>
@@ -180,8 +180,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="checked" width="8" height="8"/>
         <image name="iconquestion" width="32" height="32"/>
-        <image name="unchecked" width="8" height="8"/>
+        <image name="tick" width="96" height="96"/>
+        <image name="untick" width="100" height="100"/>
     </resources>
 </document>
