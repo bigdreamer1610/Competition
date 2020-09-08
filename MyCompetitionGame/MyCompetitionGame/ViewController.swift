@@ -155,7 +155,6 @@ class ViewController: UIViewController, GIDSignInDelegate {
         btnFacebook.layer.cornerRadius = 20
         btnFacebook.layer.borderWidth = 1
         btnFacebook.layer.borderColor = UIColor.white.cgColor
-        
         btnGoogle.backgroundColor = .clear
         btnGoogle.layer.cornerRadius = 20
         btnGoogle.layer.borderWidth = 1

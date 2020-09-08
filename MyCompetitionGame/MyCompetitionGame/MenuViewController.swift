@@ -32,7 +32,7 @@ class MenuViewController: UIViewController {
         } else {
             name = MyDatabase.user.string(forKey: keys.name)!
         }
-        lbHello.text = "Hello, \(name)"
+        lbHello.text = "\(name)"
 
         self.navigationItem.hidesBackButton = true
         // Do any additional setup after loading the view.
