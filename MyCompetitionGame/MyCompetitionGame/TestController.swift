@@ -13,6 +13,7 @@ import FirebaseDatabase
 class TestController: UIViewController {
     
     
+    @IBOutlet var centerIndicator: UIActivityIndicatorView!
     @IBOutlet var lbTime: UILabel!
     //@IBOutlet var lbTime: UILabel!
     @IBOutlet var btnSubmit: UIButton!
@@ -39,7 +40,13 @@ class TestController: UIViewController {
         testTableView.dataSource = self
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+         super.viewWillDisappear(animated)
+           navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
         lbTime.text = "600"
         for _ in 1...10 {
             systemArray.append(Int.random(in: 1...4))
@@ -94,6 +101,9 @@ class TestController: UIViewController {
     }
     func retrieveDataQuestionTest(){
         // var myList = [Question]()
+        centerIndicator.isHidden = false
+        centerIndicator.startAnimating()
+        testTableView.isHidden = true
         MyDatabase.ref.child("Question").observeSingleEvent(of: .value) {[weak self] (snapshot) in
             guard let `self` = self else {
                 return
@@ -122,6 +132,10 @@ class TestController: UIViewController {
                     self.myTest.append(self.test[i])
                 }
                 self.testTableView.reloadData()
+                self.testTableView.isHidden = false
+                self.centerIndicator.isHidden = true
+                self.centerIndicator.stopAnimating()
+                
             }
         }
         

@@ -10,6 +10,7 @@ import Firebase
 import FirebaseDatabase
 import GoogleSignIn
 import FBSDKLoginKit
+import AuthenticationServices
 class ViewController: UIViewController, GIDSignInDelegate {
 
     @IBOutlet var btnFacebook: UIButton!
@@ -23,12 +24,35 @@ class ViewController: UIViewController, GIDSignInDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         retrieveDataQuestion()
-        self.navigationItem.hidesBackButton = true
         customizeButton()
         getAccountList()
         print(accounts.count)
         GIDSignIn.sharedInstance()?.delegate = self
     }
+    
+    func convertDate(){
+        let myDate = "12-02-2020 09:20:19"
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "vi_VN")
+        dateFormatter.dateFormat = "dd-MM-yyyy hh:mm:ss"
+        let date = dateFormatter.date(from: myDate)
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date!)
+        print("my components: \(components)")
+        
+    }
+    
+    //set navigation bar of the first screen disappear
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+         super.viewWillDisappear(animated)
+           navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     @IBAction func clickBtnTest(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Menu_vc") as? MenuViewController
         self.navigationController?.pushViewController(vc!, animated: true)
@@ -198,9 +222,10 @@ class ViewController: UIViewController, GIDSignInDelegate {
     
     //google
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let _ = error {
+            return
+        }
         var thisChild: Int = 0
-        print("alo alo google")
-        //let userid = user.userID
         let email = user.profile.email as String
         let fullName = user.profile.name as String
         print(email)
@@ -250,8 +275,6 @@ class ViewController: UIViewController, GIDSignInDelegate {
         }
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "Menu_vc") as? MenuViewController
         self.navigationController?.pushViewController(vc!, animated: true)
-        
-        
     }
     
     func UIColorFromRGB(_ rgbValue: Int) -> UIColor {
@@ -259,3 +282,4 @@ class ViewController: UIViewController, GIDSignInDelegate {
     }
     
 }
+

@@ -14,6 +14,7 @@ class QuestionListViewController: UIViewController {
 
 
     
+    @IBOutlet var centerIndicator: UIActivityIndicatorView!
     @IBOutlet var heightConstant: NSLayoutConstraint!
     @IBOutlet var indicator: UIActivityIndicatorView!
     @IBOutlet var indicatorView: UIView!
@@ -24,13 +25,14 @@ class QuestionListViewController: UIViewController {
     var cateid: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationItem.hidesBackButton = false
         heightConstant.constant = 0
+        centerIndicator.isHidden = true
         indicator.isHidden = true
         indicatorView.backgroundColor = .clear
         retrieveDataQuestion()
         fetchQuestionsByCateid(cateid: cateid)
-        print("call: \(questions.count)")
-        print("by cate: \(questionsByCate.count)")
         // Do any additional setup after loading the view.
         let nib = UINib(nibName: "SingleQuestionCell", bundle: nil)
         questionTableView.register(nib, forCellReuseIdentifier: "SingleQuestionCell")
@@ -38,6 +40,12 @@ class QuestionListViewController: UIViewController {
     }
     
     func retrieveDataQuestion(){
+        if questions.count == 0 {
+            centerIndicator.startAnimating()
+            centerIndicator.isHidden = false
+            questionTableView.isHidden = true
+        }
+        
         var myQuestions = [Question]()
         MyDatabase.ref.child("Question").observeSingleEvent(of: .value) {[weak self] (snapshot) in
             guard let `self` = self else {
@@ -64,6 +72,9 @@ class QuestionListViewController: UIViewController {
                 self.questions = myQuestions
                 self.addRefreshControl()
                 self.questionTableView.reloadData()
+                self.questionTableView.isHidden = false
+                self.centerIndicator.isHidden = true
+                self.centerIndicator.stopAnimating()
             }
         }
         

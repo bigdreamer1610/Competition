@@ -33,6 +33,16 @@ class ResultController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+         super.viewWillDisappear(animated)
+           navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     func customizeLayout(){
         btnBackMenu.layer.cornerRadius = 20
         btnBackMenu.layer.borderWidth = 2
@@ -54,6 +64,7 @@ class ResultController: UIViewController {
     
     @IBAction func clickBack(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Menu_vc") as? MenuViewController
+        vc?.modalTransitionStyle = .crossDissolve
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     

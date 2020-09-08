@@ -38,6 +38,16 @@ class MenuViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+         super.viewWillDisappear(animated)
+           navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     func customizeButton(){
         btnViewCate.layer.cornerRadius = 15
         btnViewCate.layer.borderWidth = 1
@@ -61,8 +71,9 @@ class MenuViewController: UIViewController {
         MyDatabase.user.removeObject(forKey: keys.name)
         MyDatabase.user.removeObject(forKey: keys.email)
         MyDatabase.user.removeObject(forKey: keys.accountid)
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "View_vc") as? ViewController
-        self.navigationController?.pushViewController(vc!, animated: true)
+//        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "View_vc") as? ViewController
+//        vc?.modalTransitionStyle = .flipHorizontal
+//        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     

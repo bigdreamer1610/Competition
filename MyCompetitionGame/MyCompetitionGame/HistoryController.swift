@@ -14,6 +14,7 @@ class HistoryController: UIViewController {
 
     
     
+    @IBOutlet var centerIndicator: UIActivityIndicatorView!
     @IBOutlet var heightConstant: NSLayoutConstraint!
     @IBOutlet var indicator: UIActivityIndicatorView!
     @IBOutlet var indicatorView: UIView!
@@ -32,8 +33,17 @@ class HistoryController: UIViewController {
         historyTableView.dataSource = self
         // Do any additional setup after loading the view.
     }
+    
+    
 
     func retrieveDataResult(){
+        if results.count == 0{
+            centerIndicator.isHidden = false
+            centerIndicator.startAnimating()
+            historyTableView.isHidden = true
+            lbError.isHidden = true
+        }
+        
         var myList = [Result]()
         MyDatabase.ref.child("Result").observeSingleEvent(of: .value) {[weak self] (snapshot) in
             guard let `self` = self else {
@@ -63,6 +73,9 @@ class HistoryController: UIViewController {
                     self.lbError.isHidden = true
                 }
                 self.historyTableView.reloadData()
+                self.historyTableView.isHidden = false
+                self.centerIndicator.isHidden = true
+                self.centerIndicator.stopAnimating()
             }
         }
         

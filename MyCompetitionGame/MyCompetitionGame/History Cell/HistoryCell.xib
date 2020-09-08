@@ -26,7 +26,7 @@
                                     <constraint firstAttribute="height" constant="30" id="rOQ-7G-W9T"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icontime" translatesAutoresizingMaskIntoConstraints="NO" id="1qt-Fd-aG3">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCalendar" translatesAutoresizingMaskIntoConstraints="NO" id="1qt-Fd-aG3">
                                 <rect key="frame" x="15" y="55" width="60" height="30"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconcategory" translatesAutoresizingMaskIntoConstraints="NO" id="5or-O9-js8">
@@ -38,8 +38,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiH-Kx-mOK">
-                                <rect key="frame" x="90" y="59.5" width="274" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="LiH-Kx-mOK">
+                                <rect key="frame" x="90" y="59.5" width="41" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999998807907104" translatesAutoresizingMaskIntoConstraints="NO" id="OK2-ay-wRH">
+                                <rect key="frame" x="284" y="59.5" width="70" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="zHr-gY-yNM"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -50,6 +59,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icontime" translatesAutoresizingMaskIntoConstraints="NO" id="vGK-Ty-9aH">
+                                <rect key="frame" x="224" y="55" width="60" height="30"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -59,16 +71,21 @@
                             <constraint firstItem="wTZ-xJ-qRE" firstAttribute="centerY" secondItem="hlL-sM-sdg" secondAttribute="centerY" id="BVu-mo-HWv"/>
                             <constraint firstAttribute="width" constant="374" id="Ct1-ro-Ksh"/>
                             <constraint firstItem="LiH-Kx-mOK" firstAttribute="leading" secondItem="1qt-Fd-aG3" secondAttribute="trailing" constant="15" id="FOb-10-OB8"/>
+                            <constraint firstItem="vGK-Ty-9aH" firstAttribute="width" secondItem="1qt-Fd-aG3" secondAttribute="width" id="Fmx-hj-177"/>
+                            <constraint firstItem="OK2-ay-wRH" firstAttribute="leading" secondItem="vGK-Ty-9aH" secondAttribute="trailing" id="GiI-Uj-nAN"/>
                             <constraint firstItem="wTZ-xJ-qRE" firstAttribute="leading" secondItem="hlL-sM-sdg" secondAttribute="trailing" constant="15" id="IRl-Xg-yUz"/>
+                            <constraint firstAttribute="trailing" secondItem="OK2-ay-wRH" secondAttribute="trailing" constant="20" id="IjW-DW-hcU"/>
                             <constraint firstItem="hlL-sM-sdg" firstAttribute="top" secondItem="XC6-Wd-lxK" secondAttribute="top" constant="20" id="LNH-Zp-apT"/>
                             <constraint firstAttribute="height" constant="140" id="O9z-gk-YTy"/>
                             <constraint firstItem="5or-O9-js8" firstAttribute="leading" secondItem="XC6-Wd-lxK" secondAttribute="leading" constant="15" id="OOf-ts-JEV"/>
                             <constraint firstItem="5or-O9-js8" firstAttribute="height" secondItem="1qt-Fd-aG3" secondAttribute="height" id="P4p-hL-dOI"/>
+                            <constraint firstItem="vGK-Ty-9aH" firstAttribute="centerY" secondItem="1qt-Fd-aG3" secondAttribute="centerY" id="Sod-vh-k2d"/>
                             <constraint firstItem="5or-O9-js8" firstAttribute="width" secondItem="1qt-Fd-aG3" secondAttribute="width" id="TXY-qQ-JcV"/>
                             <constraint firstItem="DbB-Nd-b9v" firstAttribute="leading" secondItem="5or-O9-js8" secondAttribute="trailing" constant="15" id="Z6T-8e-94F"/>
-                            <constraint firstAttribute="trailing" secondItem="LiH-Kx-mOK" secondAttribute="trailing" constant="10" id="bH0-2H-Bw6"/>
                             <constraint firstItem="1qt-Fd-aG3" firstAttribute="top" secondItem="hlL-sM-sdg" secondAttribute="bottom" constant="5" id="dx2-Rt-MUh"/>
+                            <constraint firstItem="OK2-ay-wRH" firstAttribute="centerY" secondItem="1qt-Fd-aG3" secondAttribute="centerY" id="ewn-pB-2pP"/>
                             <constraint firstAttribute="trailing" secondItem="DbB-Nd-b9v" secondAttribute="trailing" constant="10" id="inW-90-tHO"/>
+                            <constraint firstItem="vGK-Ty-9aH" firstAttribute="height" secondItem="1qt-Fd-aG3" secondAttribute="height" id="jfE-hP-yYf"/>
                             <constraint firstItem="5or-O9-js8" firstAttribute="top" secondItem="1qt-Fd-aG3" secondAttribute="bottom" constant="9" id="kN6-bf-lgO"/>
                             <constraint firstItem="1qt-Fd-aG3" firstAttribute="width" secondItem="hlL-sM-sdg" secondAttribute="width" id="lpl-Rg-Gqe"/>
                             <constraint firstItem="1qt-Fd-aG3" firstAttribute="height" secondItem="hlL-sM-sdg" secondAttribute="height" id="nAf-0r-kNq"/>
@@ -90,11 +107,13 @@
                 <outlet property="lbCategory" destination="DbB-Nd-b9v" id="aOu-5T-F7x"/>
                 <outlet property="lbScore" destination="wTZ-xJ-qRE" id="sYe-K0-viv"/>
                 <outlet property="lbTime" destination="LiH-Kx-mOK" id="9W4-MX-HdK"/>
+                <outlet property="lbTime2" destination="OK2-ay-wRH" id="Y1X-yI-Sgy"/>
             </connections>
             <point key="canvasLocation" x="185.50724637681162" y="153.34821428571428"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="iconCalendar" width="480" height="480"/>
         <image name="iconcategory" width="64" height="64"/>
         <image name="iconscore" width="64" height="64"/>
         <image name="icontime" width="100" height="100"/>

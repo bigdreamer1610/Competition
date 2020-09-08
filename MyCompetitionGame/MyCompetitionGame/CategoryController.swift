@@ -15,6 +15,8 @@ struct Item {
 }
 class CategoryController: UIViewController {
     
+    
+    @IBOutlet var centerIndicator: UIActivityIndicatorView!
     @IBOutlet var categoryTableView: UITableView!
     var categories = [Category]()
     var myChild = "Category"
@@ -44,6 +46,11 @@ class CategoryController: UIViewController {
         
     }
     func retrieveDataCategory(){
+        if categories.count == 0 {
+            centerIndicator.startAnimating()
+            categoryTableView.isHidden = true
+        }
+        
         var myCategories = [Category]()
         MyDatabase.ref.child("Category").observeSingleEvent(of: .value) {[weak self] (snapshot) in
             guard let `self` = self else {
@@ -62,6 +69,9 @@ class CategoryController: UIViewController {
                 self.categories = myCategories
                 self.addRefreshControl()
                 self.categoryTableView.reloadData()
+                self.categoryTableView.isHidden = false
+                self.centerIndicator.stopAnimating()
+                self.centerIndicator.isHidden = true
             }
         }
         
@@ -78,7 +88,6 @@ class CategoryController: UIViewController {
     
     @objc func refresh(_ sender: UIRefreshControl){
         retrieveDataCategory()
-        //categoryTableView.reloadData()
         indicator.startAnimating()
         refreshControl.beginRefreshing()
         indicator.isHidden = false
