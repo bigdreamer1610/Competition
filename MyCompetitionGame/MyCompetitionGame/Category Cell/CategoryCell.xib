@@ -103,7 +103,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="back1" width="3882" height="2584"/>
+        <image name="back1" width="1294" height="861"/>
         <image name="icontag2" width="80" height="80"/>
     </resources>
 </document>

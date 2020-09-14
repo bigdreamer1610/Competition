@@ -12,7 +12,7 @@ protocol CategoryCellDelegate: AnyObject {
     func didTapButton(with title: String, cateid: Int)
 }
 
-class CategoryCell: UITableViewCell {
+class CategoryCell: BaseTBCell {
 
     @IBOutlet var backView: UIView!
     @IBOutlet var cateImage: UIImageView!

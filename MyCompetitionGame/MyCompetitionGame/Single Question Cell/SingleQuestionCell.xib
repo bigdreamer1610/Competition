@@ -9,45 +9,56 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SingleQuestionCell" rowHeight="77" id="KGk-i7-Jjw" customClass="SingleQuestionCell" customModule="MyCompetitionGame" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="357" height="77"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SingleQuestionCell" rowHeight="124" id="KGk-i7-Jjw" customClass="SingleQuestionCell" customModule="MyCompetitionGame" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="412" height="124"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="357" height="77"/>
+                <rect key="frame" x="0.0" y="0.0" width="412" height="124"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whe will the rain fall?" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNS-H8-hZ5">
-                        <rect key="frame" x="23" y="5" width="324" height="60"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZG-ez-WyH">
+                        <rect key="frame" x="0.0" y="0.0" width="412" height="123"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whe will the rain fall?" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNS-H8-hZ5">
+                                <rect key="frame" x="80" y="10" width="312" height="103"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <constraints>
-                            <constraint firstAttribute="height" constant="60" id="vtY-82-ebU"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4j-FW-fOn">
-                        <rect key="frame" x="10" y="5" width="3" height="60"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="3" id="zNj-k6-jbc"/>
+                            <constraint firstAttribute="trailing" secondItem="MNS-H8-hZ5" secondAttribute="trailing" constant="20" id="FMc-Et-l7Q"/>
+                            <constraint firstAttribute="bottom" secondItem="MNS-H8-hZ5" secondAttribute="bottom" constant="10" id="gNy-ym-1OS"/>
+                            <constraint firstItem="MNS-H8-hZ5" firstAttribute="top" secondItem="oZG-ez-WyH" secondAttribute="top" constant="10" id="igS-3M-Lwb"/>
+                            <constraint firstAttribute="height" constant="123" id="kmw-O5-KSK"/>
                         </constraints>
                     </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="question (1)" translatesAutoresizingMaskIntoConstraints="NO" id="MIm-Tp-0Ja">
+                        <rect key="frame" x="20" y="36.5" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="3Rc-35-xbz"/>
+                            <constraint firstAttribute="width" constant="50" id="mwV-Nr-MXt"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="m4j-FW-fOn" firstAttribute="height" secondItem="MNS-H8-hZ5" secondAttribute="height" id="9HZ-lb-sRN"/>
-                    <constraint firstItem="m4j-FW-fOn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="VSf-oB-71Q"/>
-                    <constraint firstAttribute="trailing" secondItem="MNS-H8-hZ5" secondAttribute="trailing" constant="10" id="fjU-g2-2j3"/>
-                    <constraint firstItem="MNS-H8-hZ5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="g6l-1x-2EN"/>
-                    <constraint firstAttribute="bottom" secondItem="MNS-H8-hZ5" secondAttribute="bottom" constant="5" id="gy4-g8-dtc"/>
-                    <constraint firstItem="m4j-FW-fOn" firstAttribute="centerY" secondItem="MNS-H8-hZ5" secondAttribute="centerY" id="zSV-QT-eEo"/>
-                    <constraint firstItem="MNS-H8-hZ5" firstAttribute="leading" secondItem="m4j-FW-fOn" secondAttribute="trailing" constant="10" id="zkz-dg-HNx"/>
+                    <constraint firstItem="oZG-ez-WyH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="3Sx-uG-gkD"/>
+                    <constraint firstItem="oZG-ez-WyH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="NNB-Je-lly"/>
+                    <constraint firstAttribute="trailing" secondItem="oZG-ez-WyH" secondAttribute="trailing" id="O0f-Qp-CV6"/>
+                    <constraint firstAttribute="bottom" secondItem="oZG-ez-WyH" secondAttribute="bottom" id="YQh-AE-fUy"/>
+                    <constraint firstItem="MIm-Tp-0Ja" firstAttribute="centerY" secondItem="oZG-ez-WyH" secondAttribute="centerY" id="b42-Oq-AGg"/>
+                    <constraint firstItem="oZG-ez-WyH" firstAttribute="leading" secondItem="MIm-Tp-0Ja" secondAttribute="trailing" constant="-70" id="b5A-2v-Nev"/>
+                    <constraint firstItem="MNS-H8-hZ5" firstAttribute="leading" secondItem="MIm-Tp-0Ja" secondAttribute="trailing" constant="10" id="urs-Ch-rjL"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="lbQuestion" destination="MNS-H8-hZ5" id="cwd-z5-c8s"/>
             </connections>
-            <point key="canvasLocation" x="157" y="135"/>
+            <point key="canvasLocation" x="115.94202898550725" y="150"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="question (1)" width="170.5" height="170.5"/>
+    </resources>
 </document>

@@ -20,5 +20,6 @@ struct keys {
     static let facebookid = "fbid"
     static let typeid = "typeid"
     static let accountid = "accountid"
-    
+    static let nickname = "nickname"
+    static let limit = "timelimit"
 }

@@ -9,12 +9,6 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
-class InsetLabel: UILabel {
-    override func drawText(in rect: CGRect) {
-        let insets = UIEdgeInsets(top: 5, left: 7, bottom: 5, right: 7)
-        super.drawText(in: rect.inset(by: insets))
-    }
-}
 
 class HistoryCell: UITableViewCell {
 
@@ -40,11 +34,10 @@ class HistoryCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func customizeLayout(){
-        backView.backgroundColor = UIColor.init(displayP3Red: 122, green: 134, blue: 125, alpha: 1)
-        backView.layer.shadowRadius = 20
-        backView.layer.cornerRadius = 20
+        backView.layer.shadowRadius = 5
+        backView.layer.cornerRadius = 6
         backView.layer.shadowOpacity = 0.5
-        backView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        backView.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
     }
     
     func convertToDate(resultDate: String) -> DateComponents {

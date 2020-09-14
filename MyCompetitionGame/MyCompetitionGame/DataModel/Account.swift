@@ -9,18 +9,22 @@
 import Foundation
 
 struct Account: Codable {
-    var id: Int
-    var name: String
-    var mail: String
-    var facebookid: String
-    var typeid: Int
+    var id: Int = 0
+    var name: String = ""
+    var mail: String = ""
+    var facebookid: String = ""
+    var typeid: Int = 0
+    var nickname: String = ""
+    var limit: Int = 100
     
-    init(id: Int,name: String,mail: String,facebookid: String, typeid: Int) {
+    init(id: Int,name: String,mail: String,facebookid: String, typeid: Int, nickname: String, limit: Int) {
         self.id = id
         self.name = name
         self.mail = mail
         self.facebookid = facebookid
         self.typeid = typeid
+        self.nickname = nickname
+        self.limit = limit
     }
 
 }

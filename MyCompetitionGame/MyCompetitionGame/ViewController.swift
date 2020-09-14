@@ -12,7 +12,7 @@ import GoogleSignIn
 import FBSDKLoginKit
 import AuthenticationServices
 class ViewController: UIViewController, GIDSignInDelegate {
-
+    
     @IBOutlet var btnFacebook: UIButton!
     
     @IBOutlet var btnGoogle: UIButton!
@@ -20,7 +20,7 @@ class ViewController: UIViewController, GIDSignInDelegate {
     var questions = [Question]()
     var accounts = [Account]()
     var newChild: Int = 0
-    @IBOutlet var btnTest: UIButton!
+    let limit = 100
     override func viewDidLoad() {
         super.viewDidLoad()
         retrieveDataQuestion()
@@ -28,28 +28,34 @@ class ViewController: UIViewController, GIDSignInDelegate {
         getAccountList()
         print(accounts.count)
         GIDSignIn.sharedInstance()?.delegate = self
+        if checkLogin() {
+            goToCategory()
+        }
     }
     
-//    func convertDate(){
-//        let myDate = "12-02-2020 09:20:19"
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.locale = Locale(identifier: "vi_VN")
-//        dateFormatter.dateFormat = "dd-MM-yyyy hh:mm:ss"
-//        let date = dateFormatter.date(from: myDate)
-//        let calendar = Calendar.current
-//        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date!)
-//
-//    }
+    func goToCategory(){
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "tabbar_vc") as? MyTabBarController
+        //self.navigationController?.pushViewController(vc!, animated: true)
+        vc?.modalTransitionStyle = .coverVertical
+        vc?.modalPresentationStyle = .fullScreen
+        self.present(vc!, animated: true, completion: nil)
+    }
+    func checkLogin() -> Bool {
+        if MyDatabase.user.string(forKey: keys.name) != nil {
+            return true
+        }
+        return false
+    }
     
     //set navigation bar of the first screen disappear
     override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            navigationController?.setNavigationBarHidden(true, animated: true)
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-         super.viewWillDisappear(animated)
-           navigationController?.setNavigationBarHidden(false, animated: true)
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     @IBAction func clickBtnTest(_ sender: Any) {
@@ -90,12 +96,9 @@ class ViewController: UIViewController, GIDSignInDelegate {
                     let id = value.object(forKey: "id") as! String
                     let email = value.object(forKey: "email") as! String
                     if self.checkAccountExist(name: name, email: email, typeid: 2) != 0 {
-                        print("my id exist: \(self.checkAccountExist(name: name, email: email, typeid: 2))")
-                        MyDatabase.user.set(name, forKey: keys.name)
-                        MyDatabase.user.set(email, forKey: keys.email)
-                        MyDatabase.user.set(self.checkAccountExist(name: name, email: email, typeid: 2), forKey: keys.accountid)
+                        let a = self.getExisingInfo(name: name, email: email, typeid: 2)
+                        self.saveToDefaults(id: a.id, name: a.name, nickname: a.nickname, typeid: 2, email: email, limit: a.limit, facebookid: a.facebookid)
                     } else {
-                        print("my id does not exist: \(self.checkAccountExist(name: name, email: email, typeid: 2))")
                         MyDatabase.ref.child("Account").observeSingleEvent(of: .value) {[weak self] (snapshot) in
                             guard let `self` = self else {
                                 return
@@ -115,27 +118,22 @@ class ViewController: UIViewController, GIDSignInDelegate {
                                     }
                                 }
                                 thisChild = self.newChild
-                                MyDatabase.ref.child("Account").child(String(thisChild)).updateChildValues(["id": self.newChild, "name": name, "mail":email,"facebookid": id, "typeid":2]){
+                                MyDatabase.ref.child("Account").child(String(thisChild)).updateChildValues(["id": self.newChild, "name": name, "mail":email,"facebookid": id, "typeid":2, "nickname": name,"timelimit": self.limit]){
                                     (error,reference) in
                                     if error == nil {
                                         print("Sign in successfully!")
-                                        MyDatabase.user.set(name, forKey: keys.name)
-                                        MyDatabase.user.set(email, forKey: keys.email)
-                                        MyDatabase.user.set(thisChild, forKey: keys.accountid)
+                                        self.saveToDefaults(id: thisChild, name: name, nickname: name, typeid: 2, email: email, limit: self.limit, facebookid: id)
                                         print("FB sign in successfully")
                                         
                                     }
                                 }
+                                self.saveToDefaults(id: thisChild, name: name, nickname: name, typeid: 2, email: email, limit: self.limit, facebookid: id)
                                 
                                 
                             }
                         }
                     }
-                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "bridge") as? NavigationController
-                    //self.navigationController?.pushViewController(vc!, animated: true)
-                    vc?.modalTransitionStyle = .coverVertical
-                    vc?.modalPresentationStyle = .fullScreen
-                    self.present(vc!, animated: true, completion: nil)
+                    self.goToCategory()
                     
                 }
             }
@@ -148,22 +146,20 @@ class ViewController: UIViewController, GIDSignInDelegate {
         signInWithGoogle()
     }
     func customizeButton(){
-        btnFacebook.applyGradient(colors: [UIColorFromRGB(0x3b5998).cgColor,UIColorFromRGB(0x8b9dc3).cgColor])
-        btnGoogle.applyGradient(colors: [UIColorFromRGB(0x3cba54).cgColor,UIColorFromRGB(0xf4c20d).cgColor,UIColorFromRGB(0xdb3236).cgColor,UIColorFromRGB(0x4885ed).cgColor])
-        btnFacebook.backgroundColor = .clear
-        
-        btnFacebook.layer.cornerRadius = 20
-        btnFacebook.layer.borderWidth = 1
-        btnFacebook.layer.borderColor = UIColor.white.cgColor
-        btnGoogle.backgroundColor = .clear
-        btnGoogle.layer.cornerRadius = 20
-        btnGoogle.layer.borderWidth = 1
-        btnGoogle.layer.borderColor = UIColor.white.cgColor
+            btnGoogle.layer.cornerRadius = 10
+            btnGoogle.layer.shadowOpacity = 0.3
+            btnGoogle.layer.shadowOffset = CGSize(width: 2, height: 2)
+            btnGoogle.layer.shadowRadius = 10.0
+            btnFacebook.layer.cornerRadius = 10
+            btnFacebook.layer.shadowOpacity = 0.3
+            btnFacebook.layer.shadowOffset = CGSize(width: 2, height: 2)
+            btnFacebook.layer.shadowRadius = 10.0
     }
     
     func signInWithGoogle(){
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance()?.signIn()
+        
         
     }
     func getAccountList(){
@@ -180,7 +176,9 @@ class ViewController: UIViewController, GIDSignInDelegate {
                         let mail = value["mail"] as? String
                         let facebookid = value["facebookid"] as? String ?? ""
                         let typeid = value["typeid"] as? Int
-                        let account = Account(id: id!, name: name!, mail: mail!, facebookid: facebookid, typeid: typeid!)
+                        let nickname = value["nickname"] as? String
+                        let limit = value["timelimit"] as? Int
+                        let account = Account(id: id!, name: name!, mail: mail!, facebookid: facebookid, typeid: typeid!, nickname: nickname!, limit: limit!)
                         myAccountList.append(account)
                     }
                 }
@@ -199,6 +197,29 @@ class ViewController: UIViewController, GIDSignInDelegate {
         return myId
     }
     
+    func getExisingInfo(name: String, email: String, typeid: Int) -> Account{
+        var id0: Int = 0
+        var name0: String = ""
+        var email0: String = ""
+        var fid0: String = ""
+        var limit0: Int = 0
+        var typeid0: Int = 0
+        var nickname0: String = ""
+        for acc in self.accounts {
+            if acc.mail == email && acc.name == name && acc.typeid == typeid {
+                id0 = acc.id
+                name0 = acc.name
+                email0 = acc.mail
+                fid0 = acc.facebookid
+                limit0 = acc.limit
+                nickname0 = acc.nickname
+                typeid0 = acc.typeid
+                break
+            }
+        }
+        let a = Account(id: id0, name: name0, mail: email0, facebookid: fid0, typeid: typeid0, nickname: nickname0, limit: limit0)
+        return a
+    }
     func retrieveDataQuestion(){
         MyDatabase.ref.child("Question").observeSingleEvent(of: .value) {[weak self] (snapshot) in
             guard let `self` = self else {
@@ -237,12 +258,9 @@ class ViewController: UIViewController, GIDSignInDelegate {
         print(email)
         print(fullName)
         if checkAccountExist(name: fullName, email: email, typeid: 1) != 0{
-            print("my id exist: \(checkAccountExist(name: fullName, email: email, typeid: 1))")
-            MyDatabase.user.set(fullName, forKey: keys.name)
-            MyDatabase.user.set(email, forKey: keys.email)
-            MyDatabase.user.set(checkAccountExist(name: fullName, email: email, typeid: 1), forKey: keys.accountid)
+            let a = getExisingInfo(name: fullName, email: email, typeid: 1)
+            saveToDefaults(id: a.id, name: a.name, nickname: a.nickname, typeid: a.typeid, email: a.mail, limit: a.limit, facebookid: a.facebookid)
         } else {
-            print("my id does not exist: \(checkAccountExist(name: fullName, email: email, typeid: 1))")
             MyDatabase.ref.child("Account").observeSingleEvent(of: .value) {[weak self] (snapshot) in
                 guard let `self` = self else {
                     return
@@ -262,28 +280,29 @@ class ViewController: UIViewController, GIDSignInDelegate {
                         }
                     }
                     thisChild = self.newChild
-                    MyDatabase.ref.child("Account").child(String(thisChild)).updateChildValues(["id": thisChild, "name": fullName, "mail":email,"facebookid": "", "typeid":1]){
+                    MyDatabase.ref.child("Account").child(String(thisChild)).updateChildValues(["id": thisChild, "name": fullName, "mail":email,"facebookid": "", "typeid":1,"nickname": fullName, "timelimit":self.limit]){
                         (error,reference) in
                         if error == nil {
                             print("Sign in successfully!")
-                            MyDatabase.user.set(fullName, forKey: keys.name)
-                            MyDatabase.user.set(email, forKey: keys.email)
-                            MyDatabase.user.set(thisChild, forKey: keys.accountid)
                             print(thisChild)
                         }
                         
                     }
                 }
             }
-            MyDatabase.user.set(fullName, forKey: keys.name)
-            MyDatabase.user.set(email, forKey: keys.email)
-            MyDatabase.user.set(thisChild, forKey: keys.accountid)
+            saveToDefaults(id: thisChild, name: fullName, nickname: fullName, typeid: 1, email: email, limit: limit, facebookid: "")
         }
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "bridge") as? NavigationController
-        //self.navigationController?.pushViewController(vc!, animated: true)
-        vc?.modalTransitionStyle = .coverVertical
-        vc?.modalPresentationStyle = .fullScreen
-        present(vc!, animated: true, completion: nil)
+        goToCategory()
+    }
+    
+    func saveToDefaults(id: Int, name: String, nickname: String,typeid: Int, email: String,limit: Int, facebookid: String){
+        MyDatabase.user.set(name, forKey: keys.name)
+        MyDatabase.user.set(id, forKey: keys.accountid)
+        MyDatabase.user.set(facebookid, forKey: keys.facebookid)
+        MyDatabase.user.set(email, forKey: keys.email)
+        MyDatabase.user.set(nickname, forKey: keys.nickname)
+        MyDatabase.user.set(limit, forKey: keys.limit)
+        MyDatabase.user.set(typeid, forKey: keys.typeid)
     }
     
     func UIColorFromRGB(_ rgbValue: Int) -> UIColor {
